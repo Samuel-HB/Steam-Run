@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 21e6221559c98e247894a751479cce56
+guid: 9645897320c57544a855030f1ab9a254
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -103,17 +103,21 @@ TextureImporter:
       name: TileSheet_Pipe_0
       rect:
         serializedVersion: 2
-        x: 200
+        x: 373
         y: 800
-        width: 200
+        width: 227
         height: 200
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape: []
-      tessellationDetail: -1
+      physicsShape:
+      - - {x: 113.5, y: 100}
+        - {x: -86.5, y: 100}
+        - {x: -86.5, y: -100}
+        - {x: 113.5, y: -100}
+      tessellationDetail: 0
       bones: []
       spriteID: e9295b8e60c487de0800000000000000
       internalID: -1335233696957623650
@@ -125,20 +129,24 @@ TextureImporter:
       name: TileSheet_Pipe_1
       rect:
         serializedVersion: 2
-        x: 400
+        x: 600
         y: 800
-        width: 200
+        width: 227
         height: 200
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: 86.5, y: 100}
+        - {x: -113.5, y: 100}
+        - {x: -113.5, y: -100}
+        - {x: 86.5, y: -100}
       tessellationDetail: 0
       bones: []
-      spriteID: 31d9fa73cf42a5741baf970b07aeb849
-      internalID: -1370172074
+      spriteID: 9bb974bfc5874634190c85d78b2154d9
+      internalID: 1792922716
       vertices: []
       indices: 
       edges: []
@@ -147,9 +155,9 @@ TextureImporter:
       name: TileSheet_Pipe_2
       rect:
         serializedVersion: 2
-        x: 0
+        x: 373
         y: 600
-        width: 200
+        width: 227
         height: 200
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -159,8 +167,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 30d41907e5cfa0f4bb0bcbc18a7a0c94
-      internalID: 1572290478
+      spriteID: b4825cd153e6187429450a159b6e8d5b
+      internalID: -2111100519
       vertices: []
       indices: 
       edges: []
@@ -169,9 +177,9 @@ TextureImporter:
       name: TileSheet_Pipe_3
       rect:
         serializedVersion: 2
-        x: 200
+        x: 600
         y: 600
-        width: 200
+        width: 227
         height: 200
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -181,8 +189,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 78842bb05ee9c414191214e6079d465a
-      internalID: 1829981243
+      spriteID: 35c6d7f1e40f8e745ae1d1e01c45dfb1
+      internalID: 1043370561
       vertices: []
       indices: 
       edges: []
@@ -191,9 +199,9 @@ TextureImporter:
       name: TileSheet_Pipe_4
       rect:
         serializedVersion: 2
-        x: 400
-        y: 600
-        width: 200
+        x: 373
+        y: 400
+        width: 227
         height: 200
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -203,8 +211,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 33d826dbce734aa4694610737d910161
-      internalID: -1705632830
+      spriteID: 34f5deb68dd2db94090f07df97514b5a
+      internalID: 575641406
       vertices: []
       indices: 
       edges: []
@@ -214,8 +222,8 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 600
-        y: 600
-        width: 200
+        y: 400
+        width: 227
         height: 200
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -225,8 +233,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3ac67b5136af17f4ca696586440a39c5
-      internalID: -105736484
+      spriteID: 5f783367a5ad5374790da40729b3dfaf
+      internalID: 1272624586
       vertices: []
       indices: 
       edges: []
@@ -235,7 +243,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 2b2f4f49b316313478f3dc484bb92860
+    spriteID: 19c142f22a0999b42b29fb117e7a3af9
     internalID: 0
     vertices: []
     indices: 
@@ -245,14 +253,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":200.0,"y":200.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":227.0,"y":200.0},"gridSpriteOffset":{"x":373.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       TileSheet_Pipe_0: -1335233696957623650
-      TileSheet_Pipe_1: -1370172074
-      TileSheet_Pipe_2: 1572290478
-      TileSheet_Pipe_3: 1829981243
-      TileSheet_Pipe_4: -1705632830
-      TileSheet_Pipe_5: -105736484
+      TileSheet_Pipe_1: 1792922716
+      TileSheet_Pipe_2: -2111100519
+      TileSheet_Pipe_3: 1043370561
+      TileSheet_Pipe_4: 575641406
+      TileSheet_Pipe_5: 1272624586
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
