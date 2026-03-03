@@ -18,6 +18,7 @@ public class TrapTest : MonoBehaviour
 
     private void Update()
     {
+        // movement to test the event
         transform.position = new Vector3(transform.position.x + 0.01f, transform.position.y, transform.position.z);
         transform.Rotate(0, 0, 50 * Time.deltaTime);
 
