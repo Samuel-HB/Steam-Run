@@ -1,8 +1,13 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovementTest : MonoBehaviour
 {
+    public GameObject sprite;
     public Rigidbody2D rb;
+    public GameObject groundCollider;
+    public GameObject rightWallCollider;
+    public GameObject leftWallCollider;
     public float moveSpeed;
     public float Acceleration;
     public float deceleration;
@@ -33,8 +38,6 @@ public class PlayerMovementTest : MonoBehaviour
     private bool isWallSliding = false;
     private bool wallSlideDirectionRight =false;
     private bool wallSlideDirectionLeft =false;
-    public GameObject rightWallChecker;
-    public GameObject leftWallChecker;
 
     private void Start()
     {
@@ -50,6 +53,75 @@ public class PlayerMovementTest : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        RaycastHit2D ground = Physics2D.Raycast(groundCollider.transform.position,Vector2.right,0.85f);
+        if (ground == true)
+        {
+            isGrounded = true;
+            rb.gravityScale = 1.9f;
+            if (isWalkingToTheRight)
+            {
+                moveInput = 1;
+            }
+            if (isWalkingToTheLeft)
+            {
+                moveInput = -1;
+            }
+        }
+        else if (ground == false)
+        {
+            isGrounded= false;
+        }
+            RaycastHit2D rightWall = Physics2D.Raycast(rightWallCollider.transform.position, Vector2.up, 0.85f);
+        if (rightWall == true)
+        {
+            if (moveInput == 1)
+            {
+                moveInput = 0;
+            }
+            if(jumpForce <= 0 && rb.linearVelocityY <=-0.1)
+            {
+                rb.linearVelocityY = -1;
+                isWallSliding = true;
+                wallSlideDirectionRight = true;
+                if (isGrounded == false)
+                {
+                    jumpForce = 1.5f;
+                }
+            }
+                
+                        
+            
+        }
+        else if (rightWall == false)
+        {
+            wallSlideDirectionRight=false;
+        }
+            RaycastHit2D leftWall = Physics2D.Raycast(leftWallCollider.transform.position, Vector2.up, 0.85f);
+        if (leftWall == true)
+        {
+            if (moveInput == -1)
+            {
+                moveInput = 0;
+            }
+            if (jumpForce <= 0 && rb.linearVelocityY <= -0.1)
+            {
+                rb.linearVelocityY = -1f;
+                isWallSliding = true;
+                wallSlideDirectionLeft = true;
+                if (isGrounded == false)
+                {
+                    jumpForce = 1.5f;
+                }
+            }           
+        }
+        else if (leftWall == false)
+        {
+            wallSlideDirectionLeft=false;
+        }
+        if(wallSlideDirectionLeft == false && wallSlideDirectionRight == false)
+        {
+            isWallSliding=false;
+        }
         if (isGrounded)
         {
             canCoyoteJump = true;
@@ -103,7 +175,7 @@ public class PlayerMovementTest : MonoBehaviour
         }
         if (wallSlideDirectionLeft && isGrounded ==false)
         {
-            rb.AddForceX(300);
+            rb.AddForceX(600);
             if (isWalkingToTheLeft)
             {
                 moveInput = -1;
@@ -116,7 +188,7 @@ public class PlayerMovementTest : MonoBehaviour
         }
         if (wallSlideDirectionRight && isGrounded == false)
         {
-            rb.AddForceX(-300);
+            rb.AddForceX(-20,ForceMode2D.Impulse);
             if (isWalkingToTheRight)
             {
                 moveInput = 1;
@@ -124,7 +196,7 @@ public class PlayerMovementTest : MonoBehaviour
                 {
                     StartJump();
                     jumpForce = 1.5f;
-                } 
+                }
             }
         }
         isJumping = true;
@@ -186,53 +258,5 @@ public class PlayerMovementTest : MonoBehaviour
     {
         isJumping=false;
         jumpForce = 0;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
-        {
-            isGrounded = true;
-            rb.gravityScale = 1.9f;
-        }
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
-        {
-            if (moveInput != 0) 
-            {
-                moveInput = 0;
-            }
-            rb.linearVelocityY = -1;
-            isWallSliding = true;
-            CheckWallSlidDirection(collision);
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
-        {
-            isGrounded = false;
-        }
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
-        {
-            isWallSliding = false;
-            CheckWallSlidDirection(collision);
-            wallSlideDirectionLeft = false;
-            wallSlideDirectionRight = false;
-        }
-    }
-    
-    private void CheckWallSlidDirection(Collision2D collision)
-    {
-        Vector2 wallDirection = transform.position - collision.transform.position;
-
-        if (wallDirection.x < 0) 
-        {
-            wallSlideDirectionRight = true;
-        }
-        else
-        {
-            wallSlideDirectionLeft = true;
-        }
     }
 }
