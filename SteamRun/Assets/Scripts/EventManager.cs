@@ -8,6 +8,7 @@ public class EventManager : MonoBehaviour
 
     public event Action RestartLevel;
     public event Action PlayerDeath;
+    public event Action EndLevelReached;
 
     private void Awake()
     {
@@ -29,5 +30,8 @@ public class EventManager : MonoBehaviour
         PlayerDeath.Invoke();
     }
 
-
+    public void EndLevelFunc()
+    {
+        EndLevelReached.Invoke();
+    }
 }
