@@ -1,0 +1,86 @@
+using System.Collections;
+using UnityEngine;
+using TMPro;
+
+public class Timer : MonoBehaviour
+{
+    public TMP_Text timerText;
+    public bool timerOver = false;
+    private IEnumerator timer;
+    private int second = 0;
+    private int minute = 0;
+    private int hour = 0;
+    private bool showMinute = false;
+    private bool showHour = false;
+
+    private void Start()
+    {
+        EventManager.Instance.RestartLevel += CallStartTimer;
+        EventManager.Instance.PlayerDeath += StopTimer;
+
+        ResetTimer();
+        CallStartTimer();
+    }
+
+    public void CallStartTimer()
+    {
+        timer = StartTimer();
+        StartCoroutine(timer);
+        timerOver = false;
+    }
+
+    public void StopTimer()
+    {
+        if (timer != null)
+        {
+            StopCoroutine(timer);
+            timer = null;
+        }
+        ResetTimer();
+    }
+
+    private void ResetTimer()
+    {
+        timerText.text = "00";
+        timerOver = true;
+    }
+
+    IEnumerator StartTimer()
+    {
+        for (second = 0; second <= 180; second++)
+        {
+            if (showHour) {
+                timerText.text = hour.ToString("") + ":" + minute.ToString("00") + ":" + second.ToString("00");
+            }
+            else if (showMinute) {
+                timerText.text = minute.ToString("") + ":" + second.ToString("00");
+            }
+            else {
+                timerText.text = second.ToString("00");
+            }
+
+            yield return new WaitForSeconds(1f);
+
+            if (second >= 60)
+            {
+                minute++;
+                second = 0;
+                showMinute = true;
+            }
+            if (minute >= 60)
+            {
+                hour++;
+                minute = 0;
+                showMinute = false;
+                showHour = true;
+            }
+        }
+        ResetTimer();
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.Instance.RestartLevel -= CallStartTimer;
+        EventManager.Instance.PlayerDeath -= StopTimer;
+    }
+}
