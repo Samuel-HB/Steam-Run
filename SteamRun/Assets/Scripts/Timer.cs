@@ -78,7 +78,7 @@ public class Timer : MonoBehaviour
                 timerText.text = second.ToString("00");
             }
 
-            yield return new WaitForSeconds(0.002f);
+            yield return new WaitForSeconds(1);
         }
     }
 
