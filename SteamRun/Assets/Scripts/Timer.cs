@@ -24,6 +24,11 @@ public class Timer : MonoBehaviour
 
     public void CallStartTimer()
     {
+        minute = 0;
+        hour = 0;
+        showMinute = false;
+        showHour = false;
+
         timer = StartTimer();
         StartCoroutine(timer);
         timerOver = false;
@@ -47,20 +52,8 @@ public class Timer : MonoBehaviour
 
     IEnumerator StartTimer()
     {
-        for (second = 0; second <= 180; second++)
+        for (second = 0; second <= 61; second++)
         {
-            if (showHour) {
-                timerText.text = hour.ToString("") + ":" + minute.ToString("00") + ":" + second.ToString("00");
-            }
-            else if (showMinute) {
-                timerText.text = minute.ToString("") + ":" + second.ToString("00");
-            }
-            else {
-                timerText.text = second.ToString("00");
-            }
-
-            yield return new WaitForSeconds(1f);
-
             if (second >= 60)
             {
                 minute++;
@@ -74,8 +67,19 @@ public class Timer : MonoBehaviour
                 showMinute = false;
                 showHour = true;
             }
+
+            if (showHour) {
+                timerText.text = hour.ToString("") + ":" + minute.ToString("00") + ":" + second.ToString("00");
+            }
+            else if (showMinute) {
+                timerText.text = minute.ToString("") + ":" + second.ToString("00");
+            }
+            else {
+                timerText.text = second.ToString("00");
+            }
+
+            yield return new WaitForSeconds(0.002f);
         }
-        ResetTimer();
     }
 
     private void OnDestroy()
