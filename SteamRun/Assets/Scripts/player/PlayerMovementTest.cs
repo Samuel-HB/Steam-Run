@@ -24,6 +24,7 @@ public class PlayerMovementTest : MonoBehaviour
     private float lastGroundedTime;
     public float jumpBufferTime;
     private bool isGrounded = false;
+    private bool hasDoneJump;
 
     public float fallGravityMultiplier;
     private float gravityScale;
@@ -80,13 +81,9 @@ public class PlayerMovementTest : MonoBehaviour
             }
             if(jumpForce <= 0 && rb.linearVelocityY <=-0.1)
             {
-                rb.linearVelocityY = -1;
+                rb.linearVelocityY = -0.5f;
                 isWallSliding = true;
                 wallSlideDirectionRight = true;
-                if (isGrounded == false)
-                {
-                    jumpForce = 1.5f;
-                }
             }
                 
                         
@@ -105,13 +102,9 @@ public class PlayerMovementTest : MonoBehaviour
             }
             if (jumpForce <= 0 && rb.linearVelocityY <= -0.1)
             {
-                rb.linearVelocityY = -1f;
+                rb.linearVelocityY = -0.5f;
                 isWallSliding = true;
                 wallSlideDirectionLeft = true;
-                if (isGrounded == false)
-                {
-                    jumpForce = 1.5f;
-                }
             }           
         }
         else if (leftWall == false)
@@ -145,7 +138,7 @@ public class PlayerMovementTest : MonoBehaviour
         float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velPower) * Mathf.Sign(speedDif);
         rb.AddForce(movement * Vector2.right);
 
-        if (isJumping == true ) 
+        if (isJumping == true  && hasDoneJump ==false) 
         {
             Jump();
         }
@@ -179,11 +172,6 @@ public class PlayerMovementTest : MonoBehaviour
             if (isWalkingToTheLeft)
             {
                 moveInput = -1;
-                if (isJumping == true)
-                {
-                    StartJump();
-                    jumpForce = 1.5f;
-                }
             }
         }
         if (wallSlideDirectionRight && isGrounded == false)
@@ -192,14 +180,21 @@ public class PlayerMovementTest : MonoBehaviour
             if (isWalkingToTheRight)
             {
                 moveInput = 1;
-                if (isJumping == true)
-                {
-                    StartJump();
-                    jumpForce = 1.5f;
-                }
             }
         }
         isJumping = true;
+        if (jumpForce <=0)
+        {
+            hasDoneJump = true;
+        }
+        if (isWalkingToTheRight)
+        {
+            moveInput = 1;
+        }
+        if (isWalkingToTheLeft)
+        {
+            moveInput = -1;
+        }
     }
     public void moveRight()
     {
@@ -252,11 +247,14 @@ public class PlayerMovementTest : MonoBehaviour
             isGrounded = false;
             isJumping = true;
             jumpForce = jumpForceRef;
+            hasDoneJump = false;
         }
+        
     }
     public void StopJump()
     {
         isJumping=false;
         jumpForce = 0;
+        hasDoneJump = true;
     }
 }
