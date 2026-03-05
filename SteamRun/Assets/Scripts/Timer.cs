@@ -5,7 +5,6 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
     public TMP_Text timerText;
-    public bool timerOver = false;
     private IEnumerator timer;
     private int second = 0;
     private int minute = 0;
@@ -31,7 +30,6 @@ public class Timer : MonoBehaviour
 
         timer = StartTimer();
         StartCoroutine(timer);
-        timerOver = false;
     }
 
     public void StopTimer()
@@ -47,7 +45,6 @@ public class Timer : MonoBehaviour
     private void ResetTimer()
     {
         timerText.text = "00";
-        timerOver = true;
     }
 
     IEnumerator StartTimer()
