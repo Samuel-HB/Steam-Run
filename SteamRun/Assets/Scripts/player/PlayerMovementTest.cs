@@ -13,6 +13,7 @@ public class PlayerMovementTest : MonoBehaviour
     public float deceleration;
     public float velPower;
     public float frictionAmount;
+    private bool isSprinting =false;
 
     public float jumpForce;
     private float jumpForceRef;
@@ -50,6 +51,8 @@ public class PlayerMovementTest : MonoBehaviour
         SC_InputManager.instance.onLeftArrowPressCanceled += stopMoveLeft;
         SC_InputManager.instance.onKeySpacePressStarted += StartJump;
         SC_InputManager.instance.onKeySpacePressCanceled += StopJump;
+        SC_InputManager.instance.onShiftPressStarted += StartSprint;
+        SC_InputManager.instance.onShiftPressCanceled += StopSprint;
         jumpForceRef = jumpForce;
     }
     private void FixedUpdate()
@@ -59,11 +62,19 @@ public class PlayerMovementTest : MonoBehaviour
         {
             isGrounded = true;
             rb.gravityScale = 1.9f;
-            if (isWalkingToTheRight)
+            if (isWalkingToTheRight && isSprinting ==true)
+            {
+                moveInput = 2;
+            }
+            else if (isWalkingToTheRight && isSprinting == false)
             {
                 moveInput = 1;
             }
-            if (isWalkingToTheLeft)
+                if (isWalkingToTheLeft && isSprinting == true)
+            {
+                moveInput = -2;
+            }
+            else if (isWalkingToTheLeft && isSprinting == false)
             {
                 moveInput = -1;
             }
@@ -75,7 +86,7 @@ public class PlayerMovementTest : MonoBehaviour
             RaycastHit2D rightWall = Physics2D.Raycast(rightWallCollider.transform.position, Vector2.up, 0.85f);
         if (rightWall == true)
         {
-            if (moveInput == 1)
+            if (moveInput >= 1)
             {
                 moveInput = 0;
             }
@@ -96,7 +107,7 @@ public class PlayerMovementTest : MonoBehaviour
             RaycastHit2D leftWall = Physics2D.Raycast(leftWallCollider.transform.position, Vector2.up, 0.85f);
         if (leftWall == true)
         {
-            if (moveInput == -1)
+            if (moveInput <= -1)
             {
                 moveInput = 0;
             }
@@ -169,7 +180,11 @@ public class PlayerMovementTest : MonoBehaviour
         if (wallSlideDirectionLeft && isGrounded ==false)
         {
             rb.AddForceX(600);
-            if (isWalkingToTheLeft)
+            if (isWalkingToTheLeft && isSprinting == true)
+            {
+                moveInput = -2;
+            }
+            else if (isWalkingToTheLeft && isSprinting == false)
             {
                 moveInput = -1;
             }
@@ -177,7 +192,11 @@ public class PlayerMovementTest : MonoBehaviour
         if (wallSlideDirectionRight && isGrounded == false)
         {
             rb.AddForceX(-20,ForceMode2D.Impulse);
-            if (isWalkingToTheRight)
+            if (isWalkingToTheRight && isSprinting == true)
+            {
+                moveInput = 2;
+            }
+            else if (isWalkingToTheRight && isSprinting == false)
             {
                 moveInput = 1;
             }
@@ -187,28 +206,47 @@ public class PlayerMovementTest : MonoBehaviour
         {
             hasDoneJump = true;
         }
-        if (isWalkingToTheRight)
+        if (isWalkingToTheRight && isSprinting == true)
+        {
+            moveInput = 2;
+        }
+        else if (isWalkingToTheRight && isSprinting == false)
         {
             moveInput = 1;
         }
-        if (isWalkingToTheLeft)
+        if (isWalkingToTheLeft && isSprinting == true)
+        {
+            moveInput = -2;
+        }
+        else if (isWalkingToTheLeft && isSprinting == false)
         {
             moveInput = -1;
         }
     }
     public void moveRight()
     {
-        if (wallSlideDirectionRight == false)
+        if (wallSlideDirectionRight == false && isSprinting == false)
+        {
+            isWalkingToTheRight = true;
+            moveInput = 2;
+        }
+        if (wallSlideDirectionRight == false && isSprinting == true)
         {
             isWalkingToTheRight = true;
             moveInput = 1;
         }
 
+
     }
 
     public void moveLeft() 
     {
-        if (wallSlideDirectionLeft == false) 
+        if (wallSlideDirectionLeft == false && isSprinting == true) 
+        {
+            isWalkingToTheLeft = true;
+            moveInput = -2;
+        }
+        if (wallSlideDirectionLeft == false && isSprinting == false)
         {
             isWalkingToTheLeft = true;
             moveInput = -1;
@@ -218,7 +256,11 @@ public class PlayerMovementTest : MonoBehaviour
     public void stopMoveRight()
     {
         isWalkingToTheRight=false;
-        if (isWalkingToTheLeft == true)
+        if (isWalkingToTheLeft == true && isSprinting == true)
+        {
+            moveInput = -2;
+        }
+        else if (isWalkingToTheLeft == true && isSprinting == false)
         {
             moveInput = -1;
         }
@@ -230,7 +272,11 @@ public class PlayerMovementTest : MonoBehaviour
     public void stopMoveLeft()
     {
         isWalkingToTheLeft=false;
-        if (isWalkingToTheRight == true)
+        if (isWalkingToTheRight == true && isSprinting == true)
+        {
+            moveInput = 2;
+        }
+        else if (isWalkingToTheRight == true && isSprinting == false)
         {
             moveInput = 1;
         }
@@ -256,5 +302,15 @@ public class PlayerMovementTest : MonoBehaviour
         isJumping=false;
         jumpForce = 0;
         hasDoneJump = true;
+    }
+
+    public void StartSprint()
+    {
+        isSprinting = true; 
+    }
+
+    public void StopSprint()
+    {
+        isSprinting=false;
     }
 }
