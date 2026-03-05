@@ -7,13 +7,14 @@ public class ActivateDeactivate : MonoBehaviour
     [SerializeField] private BoxCollider2D coll;
     [SerializeField] private PlayerMovementTest movementScript;
 
-
     private void Start()
     {
         EventManager.Instance.PlayerDeath += Deactivate;
         EventManager.Instance.RestartLevel += Activate;
         EventManager.Instance.AbleToPlay += ActivateInput;
+
         movementScript.enabled = false;
+        rb.gravityScale = 1.9f;
     }
 
     private void Deactivate()

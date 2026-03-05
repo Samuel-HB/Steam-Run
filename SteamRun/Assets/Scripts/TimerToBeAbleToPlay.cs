@@ -1,13 +1,15 @@
 using System.Collections;
 using UnityEngine;
 
-public class TimerRestartLevel : MonoBehaviour
+public class TimerToBeAbleToPlay : MonoBehaviour
 {
     private IEnumerator timer;
+    [SerializeField] private int tenthSecondToWaitBeforePlay = 10;
 
     private void Start()
     {
-        EventManager.Instance.PlayerDeath += CallStartTimer;
+        EventManager.Instance.RestartLevel += CallStartTimer;
+        CallStartTimer();
     }
 
     public void CallStartTimer()
@@ -27,15 +29,15 @@ public class TimerRestartLevel : MonoBehaviour
 
     IEnumerator StartTimer()
     {
-        for (int tenthSecond = 0; tenthSecond <= 6; tenthSecond++) {
+        for (int tenthSecond = 0; tenthSecond <= tenthSecondToWaitBeforePlay; tenthSecond++) {
             yield return new WaitForSeconds(0.1f);
         }
-        EventManager.Instance.StartLevelFunc();
+        EventManager.Instance.AbleToPlayFunc();
         StopTimer();
     }
 
     private void OnDestroy()
     {        
-        EventManager.Instance.PlayerDeath -= CallStartTimer;
+        EventManager.Instance.RestartLevel -= CallStartTimer;
     }
 }
