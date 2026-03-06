@@ -14,6 +14,7 @@ public class TimerToBeAbleToPlay : MonoBehaviour
 
     public void CallStartTimer()
     {
+        Debug.Log("timer");
         timer = StartTimer();
         StartCoroutine(timer);
     }
