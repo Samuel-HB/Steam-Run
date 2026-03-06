@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fbbe151969d3c344b75edb5455746f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimerAbleToPlay
-  tenthSecondToWaitBeforePlay: 11
+  tenthSecondToWaitBeforePlay: 14
 --- !u!1 &3200317133168443118
 GameObject:
   m_ObjectHideFlags: 0
