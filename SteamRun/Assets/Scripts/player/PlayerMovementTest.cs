@@ -35,7 +35,7 @@ public class PlayerMovementTest : MonoBehaviour
     public LayerMask groundLayer;
     bool isWalkingToTheRight = false;
     bool isWalkingToTheLeft = false;
-    int moveInput = 0;
+    float moveInput = 0;
 
     private bool isWallSliding = false;
     private bool wallSlideDirectionRight =false;
@@ -64,7 +64,7 @@ public class PlayerMovementTest : MonoBehaviour
             rb.gravityScale = 1.9f;
             if (isWalkingToTheRight && isSprinting ==true)
             {
-                moveInput = 2;
+                moveInput = 1.5f;
             }
             else if (isWalkingToTheRight && isSprinting == false)
             {
@@ -72,7 +72,7 @@ public class PlayerMovementTest : MonoBehaviour
             }
                 if (isWalkingToTheLeft && isSprinting == true)
             {
-                moveInput = -2;
+                moveInput = -1.5f;
             }
             else if (isWalkingToTheLeft && isSprinting == false)
             {
@@ -182,7 +182,7 @@ public class PlayerMovementTest : MonoBehaviour
             rb.AddForceX(600);
             if (isWalkingToTheLeft && isSprinting == true)
             {
-                moveInput = -2;
+                moveInput = -1.5f;
             }
             else if (isWalkingToTheLeft && isSprinting == false)
             {
@@ -194,7 +194,7 @@ public class PlayerMovementTest : MonoBehaviour
             rb.AddForceX(-20,ForceMode2D.Impulse);
             if (isWalkingToTheRight && isSprinting == true)
             {
-                moveInput = 2;
+                moveInput = 1.5f;
             }
             else if (isWalkingToTheRight && isSprinting == false)
             {
@@ -208,7 +208,7 @@ public class PlayerMovementTest : MonoBehaviour
         }
         if (isWalkingToTheRight && isSprinting == true)
         {
-            moveInput = 2;
+            moveInput = 1.5f;
         }
         else if (isWalkingToTheRight && isSprinting == false)
         {
@@ -216,7 +216,7 @@ public class PlayerMovementTest : MonoBehaviour
         }
         if (isWalkingToTheLeft && isSprinting == true)
         {
-            moveInput = -2;
+            moveInput = -1.5f;
         }
         else if (isWalkingToTheLeft && isSprinting == false)
         {
@@ -228,7 +228,7 @@ public class PlayerMovementTest : MonoBehaviour
         if (wallSlideDirectionRight == false && isSprinting == false)
         {
             isWalkingToTheRight = true;
-            moveInput = 2;
+            moveInput = 1.5f;
         }
         if (wallSlideDirectionRight == false && isSprinting == true)
         {
@@ -244,7 +244,7 @@ public class PlayerMovementTest : MonoBehaviour
         if (wallSlideDirectionLeft == false && isSprinting == true) 
         {
             isWalkingToTheLeft = true;
-            moveInput = -2;
+            moveInput = -1.5f;
         }
         if (wallSlideDirectionLeft == false && isSprinting == false)
         {
@@ -258,7 +258,7 @@ public class PlayerMovementTest : MonoBehaviour
         isWalkingToTheRight=false;
         if (isWalkingToTheLeft == true && isSprinting == true)
         {
-            moveInput = -2;
+            moveInput = -1.5f;
         }
         else if (isWalkingToTheLeft == true && isSprinting == false)
         {
@@ -274,7 +274,7 @@ public class PlayerMovementTest : MonoBehaviour
         isWalkingToTheLeft=false;
         if (isWalkingToTheRight == true && isSprinting == true)
         {
-            moveInput = 2;
+            moveInput = 1.5f;
         }
         else if (isWalkingToTheRight == true && isSprinting == false)
         {
