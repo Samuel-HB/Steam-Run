@@ -319,6 +319,8 @@ GameObject:
   - component: {fileID: 8261691774986678478}
   - component: {fileID: 1547751977538013348}
   - component: {fileID: -6263585063727467479}
+  - component: {fileID: 3105942601014340733}
+  - component: {fileID: 8007944079696946090}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -464,6 +466,30 @@ MonoBehaviour:
   rb: {fileID: 8171056642438542092}
   coll: {fileID: 8261691774986678478}
   movementScript: {fileID: 1547751977538013348}
+--- !u!114 &3105942601014340733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7892128880217491502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad5a0e421505c684dab5f7ab0229b444, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Lose
+--- !u!114 &8007944079696946090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7892128880217491502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddd3ad1201872bc408ace3313085474f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RestartPosition
 --- !u!1 &8250021610847145194
 GameObject:
   m_ObjectHideFlags: 0

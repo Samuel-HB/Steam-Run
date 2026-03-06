@@ -27,7 +27,7 @@ public class TimerToRestartLevel : MonoBehaviour
 
     IEnumerator StartTimer()
     {
-        for (int tenthSecond = 0; tenthSecond <= 10; tenthSecond++) {
+        for (int tenthSecond = 0; tenthSecond <= 3; tenthSecond++) {
             yield return new WaitForSeconds(0.1f);
         }
         EventManager.Instance.StartLevelFunc();

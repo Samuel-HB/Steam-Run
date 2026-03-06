@@ -14,11 +14,10 @@ public class Timer : MonoBehaviour
 
     private void Start()
     {
-        EventManager.Instance.RestartLevel += CallStartTimer;
+        EventManager.Instance.AbleToPlay += CallStartTimer;
         EventManager.Instance.PlayerDeath += StopTimer;
 
         ResetTimer();
-        CallStartTimer();
     }
 
     public void CallStartTimer()
@@ -81,7 +80,7 @@ public class Timer : MonoBehaviour
 
     private void OnDestroy()
     {
-        EventManager.Instance.RestartLevel -= CallStartTimer;
+        EventManager.Instance.AbleToPlay -= CallStartTimer;
         EventManager.Instance.PlayerDeath -= StopTimer;
     }
 }
