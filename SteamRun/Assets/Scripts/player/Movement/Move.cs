@@ -13,7 +13,7 @@ public class Move : MonoBehaviour
 
     private void Start()
     {
-        SC_InputManager.instance.OnMovement += SetInputDirection();
+        //SC_InputManager.instance.OnMovement += SetInputDirection();
     }
     private void OnDestroy()
     {
