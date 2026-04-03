@@ -6,16 +6,16 @@ public class SC_Spike : MonoBehaviour
     public GameObject trapSpawner;
     public int numberOfTrapToSpawn=0;
     public bool direction =true;
-    public int spaceBetween;
+    public float spaceBetween;
 
     public bool isThereGap;
-    public int gap;
-    public int gapLength;
+    public float gap;
+    public float gapLength;
     public int numberOfGap;
 
     public bool goUpwardOrDownward;
     public bool goUpward;
-    public int heightChangeSpace;
+    public float heightChangeSpace;
     public int numberBeforeHeightChange;
     public int numberOfHeightChange;
     private bool changeHeight;
@@ -28,7 +28,7 @@ public class SC_Spike : MonoBehaviour
     {
         int gapIndex = 0;
         int heightChangeIndex = 0;
-        int gapLengthIndex = gapLength;
+        float gapLengthIndex = gapLength;
         if (goUpwardOrDownward==true )
         {
             if (goUpward == false)

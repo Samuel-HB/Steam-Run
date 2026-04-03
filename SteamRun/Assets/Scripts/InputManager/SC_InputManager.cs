@@ -20,6 +20,8 @@ public class SC_InputManager : MonoBehaviour
 
     public event Action onEscapeButtonPressStarted;
 
+    public event Action onInteractButtonPress;
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -64,7 +66,7 @@ public class SC_InputManager : MonoBehaviour
         }
     }
 
-    public void OnShiftPressedStarted (InputAction.CallbackContext _context)
+    public void OnShiftPressedStarted(InputAction.CallbackContext _context)
     {
         if (_context.started)
         {
@@ -85,6 +87,14 @@ public class SC_InputManager : MonoBehaviour
         else if (_context.canceled)
         {
             onKeySpacePressCanceled?.Invoke();
+        }
+    }
+
+    public void OnInteractPress(InputAction.CallbackContext _context)
+    {
+        if (_context.started)
+        {
+            onShiftPressStarted?.Invoke();
         }
     }
 }
