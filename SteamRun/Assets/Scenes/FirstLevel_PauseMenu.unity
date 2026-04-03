@@ -6585,6 +6585,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1369597186286094863, guid: 5da15fa5f8f141f479a4a2a8fdf560c1, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1369597186286094863, guid: 5da15fa5f8f141f479a4a2a8fdf560c1, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_ActionId
+      value: 13e717f8-ac71-4376-aadc-44413c4848b1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1369597186286094863, guid: 5da15fa5f8f141f479a4a2a8fdf560c1, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_ActionName
+      value: 'Player/Interact[/Keyboard/e]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1369597186286094863, guid: 5da15fa5f8f141f479a4a2a8fdf560c1, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1369597186286094863, guid: 5da15fa5f8f141f479a4a2a8fdf560c1, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnShiftPressedStarted
+      objectReference: {fileID: 0}
     - target: {fileID: 4569534599668682332, guid: 5da15fa5f8f141f479a4a2a8fdf560c1, type: 3}
       propertyPath: m_Name
       value: GameManager
