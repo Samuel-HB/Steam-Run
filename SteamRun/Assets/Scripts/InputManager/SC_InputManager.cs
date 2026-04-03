@@ -22,6 +22,9 @@ public class SC_InputManager : MonoBehaviour
 
     public event Action onInteractButtonPress;
 
+    public event Action onMovementStart;
+    public event Action onMovementStop;
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -94,7 +97,19 @@ public class SC_InputManager : MonoBehaviour
     {
         if (_context.started)
         {
-            onShiftPressStarted?.Invoke();
+            onInteractButtonPress?.Invoke();
         }
     }
+    public void OnMovement(InputAction.CallbackContext _context)
+    {
+        if (_context.started)
+        {
+            onMovementStart?.Invoke();
+        }
+        else if (_context.canceled)
+        {
+            onMovementStop?.Invoke();
+        }
+    }
+
 }
