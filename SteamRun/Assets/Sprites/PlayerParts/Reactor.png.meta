@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d43b1c27bcbc5c147a2780efe6ae3491
+guid: 2acac86b4e1f12a41a5702b9a2e1bed8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5064418291979348453
-    second: LitteWheel 12_0
+      213: 813387220620084647
+    second: Reactor_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -38,7 +38,7 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 1
-    aniso: 3
+    aniso: 1
     mipBias: 0
     wrapU: 1
     wrapV: 1
@@ -72,7 +72,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: LitteWheel 12_0
+      name: Reactor_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1206
-        height: 1206
+        width: 88
+        height: 190
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b169498556297b9b0800000000000000
-      internalID: -5064418291979348453
+      spriteID: 7a507ed1e5bb94b00800000000000000
+      internalID: 813387220620084647
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      LitteWheel 12_0: -5064418291979348453
+      Reactor_0: 813387220620084647
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
