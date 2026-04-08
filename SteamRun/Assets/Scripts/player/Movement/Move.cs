@@ -19,9 +19,20 @@ public class Move : MonoBehaviour
     private float inputDirection;
     private float inputDirectionRef;
 
+    //new
+    [SerializeField] private Animator animator;
+    [SerializeField] private Transform spriteTransform;
+    [SerializeField] private Transform wheelTransform;
+    private float spriteScale;
+    private float invertedSpriteScale;
+
     private void Start()
     {
         moveSpeed = speed;
+
+        //new
+        spriteScale = spriteTransform.localScale.x;
+        invertedSpriteScale = spriteTransform.localScale.x * -1;
     }
     private void FixedUpdate()
     {
@@ -30,9 +41,9 @@ public class Move : MonoBehaviour
             inputDirection = 0;
         }
         else if (jumpRef.isRightWallSliding ==true && inputDirection> 0.1f)
-               {
-                   inputDirection = 0;
-               }
+        {
+            inputDirection = 0;
+        }
         else
         {
             inputDirection = inputDirectionRef;
@@ -42,6 +53,29 @@ public class Move : MonoBehaviour
         float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? Acceleration : deceleration;
         float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velPower) * Mathf.Sign(speedDif);
         rb.AddForce(movement * Vector2.right);
+
+
+        //new
+
+        if (inputDirection != 0)
+        {
+            animator.SetBool("isRunning", true);
+        }
+        else {
+            animator.SetBool("isRunning", false);
+        }
+        print("inputDirection: " + inputDirection);
+
+        wheelTransform.Rotate(0, 0, Mathf.Abs(inputDirection * moveSpeed) * -25 * Time.deltaTime);
+
+        if (rb.linearVelocity.x > 0.1f) {
+            spriteTransform.localScale = new Vector3(spriteScale,
+                                                     spriteTransform.localScale.y, spriteTransform.localScale.z);
+        }
+        else if (rb.linearVelocity.x < -0.1f) {
+            spriteTransform.localScale = new Vector3(invertedSpriteScale,
+                                                     spriteTransform.localScale.y, spriteTransform.localScale.z);
+        }
     }
 
     public void SetInputDirection(InputAction.CallbackContext _context)

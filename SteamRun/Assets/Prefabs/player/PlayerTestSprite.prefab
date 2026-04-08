@@ -1095,6 +1095,9 @@ MonoBehaviour:
   velPower: 0.87
   frictionAmount: 0.25
   jumpRef: {fileID: -2631429694570221278}
+  animator: {fileID: 8196130189975783307}
+  spriteTransform: {fileID: 1673883142154973435}
+  wheelTransform: {fileID: 3413790321647068668}
 --- !u!114 &-2631429694570221278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1116,6 +1119,7 @@ MonoBehaviour:
   isRightWallSliding: 0
   wallFriction: -0.5
   wallJumpStrength: 14.14
+  animator: {fileID: 8196130189975783307}
 --- !u!114 &-4067997789090497217
 MonoBehaviour:
   m_ObjectHideFlags: 0
