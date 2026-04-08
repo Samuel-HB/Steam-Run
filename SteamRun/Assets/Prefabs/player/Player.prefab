@@ -437,7 +437,8 @@ MonoBehaviour:
   goSprite: {fileID: 1170398596051511814}
   rb: {fileID: 8171056642438542092}
   coll: {fileID: 8261691774986678478}
-  movementScript: {fileID: 0}
+  movementScript: {fileID: -7710706244547141198}
+  jumpScript: {fileID: -4839060353372919340}
 --- !u!114 &3105942601014340733
 MonoBehaviour:
   m_ObjectHideFlags: 0
