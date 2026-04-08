@@ -5,7 +5,8 @@ public class ActivateDeactivate : MonoBehaviour
     [SerializeField] private GameObject goSprite;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private BoxCollider2D coll;
-    [SerializeField] private PlayerMovementTest movementScript;
+    [SerializeField] private Move movementScript;
+    [SerializeField] private Jump jumpScript;
 
     private void Start()
     {
@@ -14,6 +15,7 @@ public class ActivateDeactivate : MonoBehaviour
         EventManager.Instance.AbleToPlay += ActivateInput;
 
         movementScript.enabled = false;
+        jumpScript.enabled = false;
         rb.gravityScale = 1.9f;
     }
 
@@ -26,6 +28,7 @@ public class ActivateDeactivate : MonoBehaviour
         rb.bodyType = RigidbodyType2D.Kinematic;
         coll.enabled = false;
         movementScript.enabled = false;
+        jumpScript.enabled = false;
     }
 
     private void Activate()
@@ -38,6 +41,7 @@ public class ActivateDeactivate : MonoBehaviour
     private void ActivateInput()
     {
         movementScript.enabled = true;
+        jumpScript.enabled = true;
     }
 
     private void OnDestroy()

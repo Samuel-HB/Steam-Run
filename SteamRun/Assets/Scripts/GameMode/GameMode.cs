@@ -13,15 +13,9 @@ public class GameMode : MonoBehaviour
 
     private void Awake()
     {
-        EventManager.Instance.PlayerDeath += WhatsTheMatter; // to understand
         EventManager.Instance.EndLevelReached += LoadNewLevel;
 
         player = Instantiate(playerPrefab, startPosition.position, Quaternion.identity);
-    }
-
-    private void WhatsTheMatter() // not working if go back to menu
-    {
-        Debug.Log("gus");
     }
 
     private void LoadNewLevel()
@@ -31,7 +25,6 @@ public class GameMode : MonoBehaviour
 
     private void OnDestroy()
     {
-        EventManager.Instance.PlayerDeath -= WhatsTheMatter; // to understand
         EventManager.Instance.EndLevelReached -= LoadNewLevel;
     }
 }

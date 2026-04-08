@@ -55,6 +55,17 @@ public class PlayerMovementTest : MonoBehaviour
         SC_InputManager.instance.onShiftPressCanceled += StopSprint;
         jumpForceRef = jumpForce;
     }
+
+    //new
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = new Color(1f, 0.75f, 0f, 0.75f);
+
+        Gizmos.DrawRay(groundCollider.transform.position, Vector2.right * 0.85f);
+        Gizmos.DrawRay(leftWallCollider.transform.position, Vector2.up * 0.85f);
+        Gizmos.DrawRay(rightWallCollider.transform.position, Vector2.up * 0.85f);
+    }
+
     private void FixedUpdate()
     {
         RaycastHit2D ground = Physics2D.Raycast(groundCollider.transform.position,Vector2.right,0.85f);
