@@ -1,7 +1,7 @@
-using Unity.VisualScripting;
+//using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerMovementTest : MonoBehaviour
+public class PlayerMovementAndAnim : MonoBehaviour
 {
     public GameObject sprite;
     public Rigidbody2D rb;
@@ -41,6 +41,14 @@ public class PlayerMovementTest : MonoBehaviour
     private bool wallSlideDirectionRight =false;
     private bool wallSlideDirectionLeft =false;
 
+    //new
+    [SerializeField] private Animator animator;
+    //[SerializeField] private Transform wheelTransform;
+    [SerializeField] private Transform wheelTransform;
+    [SerializeField] private Transform spriteTransform;
+    private float spriteScale;
+    private float invertedSpriteScale;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -54,6 +62,10 @@ public class PlayerMovementTest : MonoBehaviour
         SC_InputManager.instance.onShiftPressStarted += StartSprint;
         SC_InputManager.instance.onShiftPressCanceled += StopSprint;
         jumpForceRef = jumpForce;
+
+        //new
+        spriteScale = spriteTransform.localScale.x;
+        invertedSpriteScale = spriteTransform.localScale.x * -1;
     }
 
     //new
@@ -61,14 +73,15 @@ public class PlayerMovementTest : MonoBehaviour
     {
         Gizmos.color = new Color(1f, 0.75f, 0f, 0.75f);
 
-        Gizmos.DrawRay(groundCollider.transform.position, Vector2.right * 0.85f);
-        Gizmos.DrawRay(leftWallCollider.transform.position, Vector2.up * 0.85f);
-        Gizmos.DrawRay(rightWallCollider.transform.position, Vector2.up * 0.85f);
+        Gizmos.DrawRay(groundCollider.transform.position, Vector2.right * 0.6f);
+        Gizmos.DrawRay(leftWallCollider.transform.position, Vector2.up * 1.25f);
+        Gizmos.DrawRay(rightWallCollider.transform.position, Vector2.up * 1.25f);
     }
 
     private void FixedUpdate()
     {
-        RaycastHit2D ground = Physics2D.Raycast(groundCollider.transform.position,Vector2.right,0.85f);
+        RaycastHit2D ground = Physics2D.Raycast(groundCollider.transform.position,Vector2.right, 0.5f);
+        //RaycastHit2D ground = Physics2D.Raycast(groundCollider.transform.position,Vector2.right, 0.645f);
         if (ground == true)
         {
             isGrounded = true;
@@ -76,27 +89,48 @@ public class PlayerMovementTest : MonoBehaviour
             if (isWalkingToTheRight && isSprinting ==true)
             {
                 moveInput = 1.5f;
+                //new
+                animator.SetBool("isRunning", true);
+                wheelTransform.Rotate(0, 0, -800 * Time.deltaTime);
             }
             else if (isWalkingToTheRight && isSprinting == false)
             {
                 moveInput = 1;
+                //new
+                animator.SetBool("isRunning", true);
+                wheelTransform.Rotate(0, 0, -400 * Time.deltaTime);
             }
-                if (isWalkingToTheLeft && isSprinting == true)
+            if (isWalkingToTheLeft && isSprinting == true)
             {
                 moveInput = -1.5f;
+                //new
+                animator.SetBool("isRunning", true);
+                wheelTransform.Rotate(0, 0, 800 * Time.deltaTime);
             }
             else if (isWalkingToTheLeft && isSprinting == false)
             {
                 moveInput = -1;
+                //new
+                animator.SetBool("isRunning", true);
+                wheelTransform.Rotate(0, 0, 400 * Time.deltaTime);
+            }
+
+            if (isWalkingToTheLeft == false && isWalkingToTheRight == false) {
+                animator.SetBool("isRunning", false);
             }
         }
         else if (ground == false)
         {
             isGrounded= false;
+            //new
+            animator.SetBool("isRunning", false);
         }
-            RaycastHit2D rightWall = Physics2D.Raycast(rightWallCollider.transform.position, Vector2.up, 0.85f);
+        RaycastHit2D rightWall = Physics2D.Raycast(rightWallCollider.transform.position, Vector2.up, 1.25f);
         if (rightWall == true)
         {
+            //new
+            animator.SetBool("isGripping", true);
+
             if (moveInput >= 1)
             {
                 moveInput = 0;
@@ -115,9 +149,12 @@ public class PlayerMovementTest : MonoBehaviour
         {
             wallSlideDirectionRight=false;
         }
-            RaycastHit2D leftWall = Physics2D.Raycast(leftWallCollider.transform.position, Vector2.up, 0.85f);
+            RaycastHit2D leftWall = Physics2D.Raycast(leftWallCollider.transform.position, Vector2.up, 1.25f);
         if (leftWall == true)
         {
+            //new
+            animator.SetBool("isGripping", true);
+
             if (moveInput <= -1)
             {
                 moveInput = 0;
@@ -133,7 +170,13 @@ public class PlayerMovementTest : MonoBehaviour
         {
             wallSlideDirectionLeft=false;
         }
-        if(wallSlideDirectionLeft == false && wallSlideDirectionRight == false)
+
+        //new
+        if (leftWall == false && rightWall == false) {
+            animator.SetBool("isGripping", false);
+        }
+
+        if (wallSlideDirectionLeft == false && wallSlideDirectionRight == false)
         {
             isWallSliding=false;
         }
@@ -178,7 +221,15 @@ public class PlayerMovementTest : MonoBehaviour
         
         lastGroundedTime -= Time.deltaTime;
 
-  
+        //new
+        if (rb.linearVelocity.x > 0.1f) {
+            spriteTransform.localScale = new Vector3(spriteScale,
+                                                     spriteTransform.localScale.y, spriteTransform.localScale.z);
+        }
+        else if (rb.linearVelocity.x < -0.1f) {
+            spriteTransform.localScale = new Vector3(invertedSpriteScale,
+                                                     spriteTransform.localScale.y, spriteTransform.localScale.z);
+        }
     }
 
     private void Jump()

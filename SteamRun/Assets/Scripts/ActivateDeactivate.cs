@@ -5,7 +5,8 @@ public class ActivateDeactivate : MonoBehaviour
     [SerializeField] private GameObject goSprite;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private BoxCollider2D coll;
-    [SerializeField] private PlayerMovementTest movementScript;
+    //[SerializeField] private PlayerMovementTest movementScript;
+    [SerializeField] private PlayerMovementAndAnim movementScript;
 
     private void Start()
     {

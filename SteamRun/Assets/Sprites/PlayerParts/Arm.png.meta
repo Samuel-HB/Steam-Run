@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d43b1c27bcbc5c147a2780efe6ae3491
+guid: 0a11157a67a1a394f860bbadb6dd20f9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5064418291979348453
-    second: LitteWheel 12_0
+      213: -5241291705561067677
+    second: Arm_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -38,7 +38,7 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 1
-    aniso: 3
+    aniso: 1
     mipBias: 0
     wrapU: 1
     wrapV: 1
@@ -49,8 +49,8 @@ TextureImporter:
   spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  alignment: 9
+  spritePivot: {x: 0.5, y: 0.82}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -72,7 +72,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: LitteWheel 12_0
+      name: Arm_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1206
-        height: 1206
+        width: 88
+        height: 224
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b169498556297b9b0800000000000000
-      internalID: -5064418291979348453
+      spriteID: 36fc4dd96f03347b0800000000000000
+      internalID: -5241291705561067677
       vertices: []
       indices: 
       edges: []
@@ -126,7 +126,7 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      LitteWheel 12_0: -5064418291979348453
+      Arm_0: -5241291705561067677
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
