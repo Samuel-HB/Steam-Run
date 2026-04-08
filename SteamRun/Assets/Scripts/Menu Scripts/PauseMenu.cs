@@ -11,8 +11,19 @@ public class PauseMenu : MonoBehaviour
     private void Start()
     {
         containerPause.SetActive(false);
+        EventManager.Instance.PauseGame += PauseHasBeenUsed;
     }
-
+    private void PauseHasBeenUsed()
+    {
+        if (isGamePaused)
+        {
+            ResumeGame();
+        }
+        else 
+        {
+            PausedGame();
+        }
+    }
     public void PausedGame()
     {
         Time.timeScale = 0;
