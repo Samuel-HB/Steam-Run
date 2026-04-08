@@ -10,6 +10,7 @@ public class EventManager : MonoBehaviour
     public event Action PlayerDeath;
     public event Action EndLevelReached;
     public event Action AbleToPlay;
+    public event Action PauseGame;
 
     private void Awake()
     {
@@ -21,6 +22,10 @@ public class EventManager : MonoBehaviour
         }
     }
 
+    public void GamePauseFunct()
+    {
+        PauseGame.Invoke();
+    }
     public void StartLevelFunc()
     {
         RestartLevel.Invoke();
