@@ -28,16 +28,21 @@ public class Move : MonoBehaviour
     private float invertedSpriteScale;
 
     //new
-    public void RestartAnim()
-    {
-        animator.SetBool("isRunning", false);
-        animator.SetBool("isGripping", false);
-        //animator.Play("Exit", 0);
+    //public void RestartAnim()
+    //{
+    //    animator.SetBool("isRunning", false);
+    //    animator.SetBool("isGripping", false);
+    //    animator.Play("Idle", -1, 0);
+    //    //animator.Play("Exit", 0);
 
-        //to restart animator and avoid constant animation blend
-        animator.enabled = false;
-        animator.enabled = true;
-    }
+    //    //to restart animator and avoid constant animation blend
+    //    //animator.enabled = false;
+    //    //animator.enabled = true;
+
+    //    animator.SetBool("isRunning", false);
+    //    animator.SetBool("isGripping", false);
+    //    animator.Play("Idle", -1, 0);
+    //}
 
     private void Start()
     {
