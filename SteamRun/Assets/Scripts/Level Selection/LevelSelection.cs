@@ -21,12 +21,12 @@ public class LevelSelection : MonoBehaviour
 
     private void Start()
     {
-        SC_InputManager.instance.onInteractButtonPress += GoToLevel;
+        EventManager.Instance.Interact += GoToLevel;
     }
 
     private void OnDestroy()
     {
-        SC_InputManager.instance.onInteractButtonPress -= GoToLevel;
+        EventManager.Instance.Interact -= GoToLevel;
     }
 
     void GoToLevel()
