@@ -11,6 +11,7 @@ public class EventManager : MonoBehaviour
     public event Action EndLevelReached;
     public event Action AbleToPlay;
     public event Action PauseGame;
+    public event Action Interact;
 
     private void Awake()
     {
@@ -22,9 +23,13 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    public void GamePauseFunct()
+    public void GamePauseFunc()
     {
         PauseGame.Invoke();
+    }
+    public void InteractFunc()
+    {
+        Interact.Invoke();
     }
     public void StartLevelFunc()
     {

@@ -5,14 +5,18 @@ using UnityEngine.SceneManagement;
 public class LevelSelection : MonoBehaviour
 {
     [SerializeField] private SceneAsset nextLevel;
+
+    bool playerInFront =false;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         print("in");
+        playerInFront = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         print("out");
+        playerInFront =false;
     }
 
     private void Start()
@@ -27,6 +31,9 @@ public class LevelSelection : MonoBehaviour
 
     void GoToLevel()
     {
-        SceneManager.LoadScene(nextLevel.name);
+        if (nextLevel != null && playerInFront == true)
+        {
+            SceneManager.LoadScene(nextLevel.name);
+        }       
     }
 }
