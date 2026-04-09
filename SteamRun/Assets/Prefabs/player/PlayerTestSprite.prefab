@@ -900,6 +900,7 @@ GameObject:
   - component: {fileID: -2631429694570221278}
   - component: {fileID: -4067997789090497217}
   - component: {fileID: -9101998042415969392}
+  - component: {fileID: -644432229000463324}
   m_Layer: 7
   m_Name: PlayerTestSprite
   m_TagString: Untagged
@@ -1197,15 +1198,27 @@ MonoBehaviour:
     m_ActionId: b95e9704-98a3-4c33-a677-0c8efd1b0833
     m_ActionName: 'Player/PauseGame[/Keyboard/escape]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -644432229000463324}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 13e717f8-ac71-4376-aadc-44413c4848b1
     m_ActionName: 'Player/Interact[/Keyboard/e]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -9101998042415969392}
-        m_TargetAssemblyTypeName: PauseGameInput, Assembly-CSharp
-        m_MethodName: PauseGame
-        m_Mode: 1
+      - m_Target: {fileID: 3664269407921975871}
+        m_TargetAssemblyTypeName: Move, Assembly-CSharp
+        m_MethodName: SetInputDirection
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1273,6 +1286,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d5dce38f5c1c784fb7802cb851691be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseGameInput
+--- !u!114 &-644432229000463324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7892128880217491502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67b8b778a073ea648a4650d7e8f24f04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Interact
 --- !u!1 &8250021610847145194
 GameObject:
   m_ObjectHideFlags: 0

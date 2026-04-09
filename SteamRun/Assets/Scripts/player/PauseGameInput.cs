@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PauseGameInput : MonoBehaviour
 {
-    public void PauseGame()
+    public void PauseGame(InputAction.CallbackContext _context)
     {
-        EventManager.Instance.GamePauseFunct();
+        EventManager.Instance.GamePauseFunc();
     }
 }
