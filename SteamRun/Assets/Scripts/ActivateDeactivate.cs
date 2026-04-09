@@ -21,7 +21,8 @@ public class ActivateDeactivate : MonoBehaviour
 
     private void Deactivate()
     {
-        goSprite.SetActive(false);
+        movementScript.RestartAnim();
+        //goSprite.SetActive(false);
         rb.linearVelocityX = 0f;
         rb.linearVelocityY = 0f;
         //rb.gravityScale = 1.9f;

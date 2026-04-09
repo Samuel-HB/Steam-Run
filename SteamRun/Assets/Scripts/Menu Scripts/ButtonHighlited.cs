@@ -14,21 +14,11 @@ public class ButtonHighlited : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        buttonText.color = new Color(230, 220, 175);
+        buttonText.color = new Color(1f, 0.95f, 0.85f);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         buttonText.color = originalColor;
     }
-
-    //public void OnMouseEnter()
-    //{
-    //    buttonText.color = new Color(230, 220, 175);
-    //}
-
-    //public void OnMouseExit()
-    //{
-    //    buttonText.color = originalColor;
-    //}
 }

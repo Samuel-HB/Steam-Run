@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class Move : MonoBehaviour
 {
@@ -25,6 +26,18 @@ public class Move : MonoBehaviour
     [SerializeField] private Transform wheelTransform;
     private float spriteScale;
     private float invertedSpriteScale;
+
+    //new
+    public void RestartAnim()
+    {
+        animator.SetBool("isRunning", false);
+        animator.SetBool("isGripping", false);
+        //animator.Play("Exit", 0);
+
+        //to restart animator and avoid constant animation blend
+        animator.enabled = false;
+        animator.enabled = true;
+    }
 
     private void Start()
     {
