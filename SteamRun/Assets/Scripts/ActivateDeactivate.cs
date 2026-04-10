@@ -36,7 +36,6 @@ public class ActivateDeactivate : MonoBehaviour
     private void Activate()
     {
         goSprite.SetActive(true);
-        //animScript.RestartAnim2();
         rb.bodyType = RigidbodyType2D.Dynamic;
         coll.enabled = true;
     }
