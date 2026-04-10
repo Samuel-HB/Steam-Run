@@ -1167,6 +1167,7 @@ MonoBehaviour:
   wallFriction: -0.5
   wallJumpStrength: 14.14
   animator: {fileID: 8196130189975783307}
+  jumpCoyoteTime: 1
 --- !u!114 &-4067997789090497217
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,6 +22,9 @@ public class Jump : MonoBehaviour
     public float wallFriction;
     public float wallJumpStrength;
     private float wallJumpStrengthRef;
+    private bool canCoyoteJump;
+    public float jumpCoyoteTime;
+    private float lastGroundedTime;
 
     private LayerMask surface;
 
@@ -47,7 +51,12 @@ public class Jump : MonoBehaviour
         RaycastHit2D ground = Physics2D.Raycast(groundCollider.transform.position, Vector2.right, 0.5f ,surface);
         if (ground == true)
         {
-            isGrounded = true;            
+            isGrounded = true;
+            lastGroundedTime = jumpCoyoteTime;
+            if(isJumping == false)
+            {
+                canCoyoteJump = true;
+            }         
         }
         else if (ground == false)
         {
@@ -99,6 +108,10 @@ public class Jump : MonoBehaviour
         {
             playerRb.AddForceY(wallFriction);
         }
+        if (lastGroundedTime < 0)
+        {
+            canCoyoteJump = false;
+        }
         if (isJumping|| isRightWallJumping||isLeftWallJumping)
         {
             if (jumpForce > 0)
@@ -125,16 +138,19 @@ public class Jump : MonoBehaviour
                 }
             }
         }
+        lastGroundedTime -= Time.deltaTime;
+        print(lastGroundedTime);
     }
 
     public void StartJump(InputAction.CallbackContext _context)
     {
         if (_context.started)
         {
-            if (isGrounded)
+            if (isGrounded || canCoyoteJump ==true)
             {
                 jumpForce = jumpForceRef;
                 isJumping = true;
+                canCoyoteJump = false;
             }
             if (isGrounded == false && isWallSliding)
             {
