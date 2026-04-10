@@ -1116,6 +1116,7 @@ MonoBehaviour:
   isRightWallSliding: 0
   wallFriction: -0.5
   wallJumpStrength: 14.14
+  jumpCoyoteTime: 0
 --- !u!114 &-4067997789090497217
 MonoBehaviour:
   m_ObjectHideFlags: 0

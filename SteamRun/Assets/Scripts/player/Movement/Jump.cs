@@ -22,6 +22,10 @@ public class Jump : MonoBehaviour
     public float wallJumpStrength;
     private float wallJumpStrengthRef;
 
+    private bool canCoyoteJump;
+    public float jumpCoyoteTime;
+    private float lastGroundedTime;
+
     private LayerMask surface;
 
 
@@ -33,8 +37,6 @@ public class Jump : MonoBehaviour
         Gizmos.DrawRay(groundCollider.transform.position, Vector2.right * 0.5f);
         Gizmos.DrawRay(leftWallCollider.transform.position, Vector2.up * 1.25f);
         Gizmos.DrawRay(rightWallCollider.transform.position, Vector2.up * 1.25f);
-
-        //previously all vectors were at 0.85f
     }
 
 
@@ -53,7 +55,12 @@ public class Jump : MonoBehaviour
         if (ground == true)
         {
             isGrounded = true;
-            
+            lastGroundedTime = jumpCoyoteTime;
+            if (isJumping == false)
+            {
+                canCoyoteJump = true;
+            }
+
         }
         else if (ground == false)
         {
@@ -97,19 +104,20 @@ public class Jump : MonoBehaviour
         {
             playerRb.AddForceY(wallFriction);
         }
+        lastGroundedTime -= Time.deltaTime;
         if (isJumping|| isRightWallJumping||isLeftWallJumping)
         {
             if (jumpForce > 0)
             {
-                playerRb.AddForceY(jumpForce * Time.deltaTime * Screen.width);
-                jumpForce -= 0.1f * Time.deltaTime * Screen.width;
+                playerRb.AddForceY(jumpForce * Time.deltaTime * 912);
+                jumpForce -= 0.1f * Time.deltaTime * 912;
             }
             if (isRightWallJumping)
             {
                 if (wallJumpStrength > 0)
                 {
-                    playerRb.AddForce(wallJumpStrength * Vector2.left * Time.deltaTime * Screen.width);
-                    wallJumpStrength -= 0.1f * Time.deltaTime * Screen.width;
+                    playerRb.AddForce(wallJumpStrength * Vector2.left * Time.deltaTime * 912);
+                    wallJumpStrength -= 0.1f * Time.deltaTime * 912;
                     print(wallJumpStrength);
                 }
             }
@@ -117,8 +125,8 @@ public class Jump : MonoBehaviour
             {
                 if (wallJumpStrength > 0)
                 {
-                    playerRb.AddForce(wallJumpStrength * Vector2.right * Time.deltaTime * Screen.width);
-                    wallJumpStrength -= 0.1f * Time.deltaTime * Screen.width;
+                    playerRb.AddForce(wallJumpStrength * Vector2.right * Time.deltaTime * 912);
+                    wallJumpStrength -= 0.1f * Time.deltaTime * 912;
                     print(wallJumpStrength);
                 }
             }
@@ -129,10 +137,11 @@ public class Jump : MonoBehaviour
     {
         if (_context.started)
         {
-            if (isGrounded)
+            if (isGrounded || canCoyoteJump == true)
             {
                 jumpForce = jumpForceRef;
                 isJumping = true;
+                canCoyoteJump = false;
             }
             if (isGrounded == false && isWallSliding)
             {

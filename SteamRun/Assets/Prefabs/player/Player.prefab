@@ -634,11 +634,12 @@ MonoBehaviour:
   rightWallCollider: {fileID: 8752849960715292154}
   leftWallCollider: {fileID: 3390213106495698963}
   playerRb: {fileID: 8171056642438542092}
-  jumpForce: 10
+  jumpForce: 1000
   isLeftWallSliding: 0
   isRightWallSliding: 0
   wallFriction: -0.5
   wallJumpStrength: 14.14
+  jumpCoyoteTime: 0
 --- !u!1 &8250021610847145194
 GameObject:
   m_ObjectHideFlags: 0
