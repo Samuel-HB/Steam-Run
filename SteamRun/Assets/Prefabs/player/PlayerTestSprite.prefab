@@ -31,10 +31,7 @@ Transform:
   m_LocalScale: {x: 0.35, y: 0.35, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 463244183447484930}
-  - {fileID: 7610925093499891645}
-  - {fileID: 3162209572186612966}
-  - {fileID: 3413790321647068668}
+  - {fileID: 161366329543116665}
   m_Father: {fileID: 6848046905928437181}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7714632706537841311
@@ -235,14 +232,14 @@ Transform:
   m_GameObject: {fileID: 1860784062253690531}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.072, y: -1.78, z: 0}
+  m_LocalPosition: {x: 0.07199999, y: -1.7799999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4552063023608440328}
   - {fileID: 8968578966261047673}
   - {fileID: 3381686164840523295}
-  m_Father: {fileID: 1673883142154973435}
+  m_Father: {fileID: 161366329543116665}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &68041135465918022
 SpriteRenderer:
@@ -329,11 +326,11 @@ Transform:
   m_GameObject: {fileID: 2622992674028972258}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.072, y: -0.05, z: -0.05}
+  m_LocalPosition: {x: 0.07199999, y: -0.049999997, z: -0.05}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1673883142154973435}
+  m_Father: {fileID: 161366329543116665}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4878050635595322457
 SpriteRenderer:
@@ -633,11 +630,11 @@ Transform:
   m_GameObject: {fileID: 4083576060366230650}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.072, y: -1.78, z: 0.1}
+  m_LocalPosition: {x: 0.07199999, y: -1.7799999, z: 0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1673883142154973435}
+  m_Father: {fileID: 161366329543116665}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &399609591237750465
 SpriteRenderer:
@@ -724,12 +721,12 @@ Transform:
   m_GameObject: {fileID: 4766376062778815751}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.09, y: 1.275, z: 0}
+  m_LocalPosition: {x: 0.089999996, y: 1.2749999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4686203705101592568}
-  m_Father: {fileID: 1673883142154973435}
+  m_Father: {fileID: 161366329543116665}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &640140831283434407
 SpriteRenderer:
@@ -881,6 +878,41 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &7867121455679239294
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 161366329543116665}
+  m_Layer: 7
+  m_Name: RobotMembers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &161366329543116665
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7867121455679239294}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 463244183447484930}
+  - {fileID: 7610925093499891645}
+  - {fileID: 3162209572186612966}
+  - {fileID: 3413790321647068668}
+  m_Father: {fileID: 1673883142154973435}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7892128880217491502
 GameObject:
   m_ObjectHideFlags: 0
@@ -894,6 +926,7 @@ GameObject:
   - component: {fileID: 8261691774986678478}
   - component: {fileID: 4228166159292180213}
   - component: {fileID: -6263585063727467479}
+  - component: {fileID: 7160470454793897482}
   - component: {fileID: 3105942601014340733}
   - component: {fileID: 8007944079696946090}
   - component: {fileID: 3664269407921975871}
@@ -1045,11 +1078,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7f3227b986e3c4f8c0cd00e61a7311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ActivateDeactivate
-  goSprite: {fileID: 1170398596051511814}
+  goSprite: {fileID: 7867121455679239294}
   rb: {fileID: 8171056642438542092}
   coll: {fileID: 8261691774986678478}
   movementScript: {fileID: 3664269407921975871}
   jumpScript: {fileID: -2631429694570221278}
+  animScript: {fileID: 7160470454793897482}
+--- !u!114 &7160470454793897482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7892128880217491502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3341de913fac69e40a6620f8410d8cdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ActivateDeactivateAnim
+  animator: {fileID: 8196130189975783307}
 --- !u!114 &3105942601014340733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1095,6 +1142,9 @@ MonoBehaviour:
   velPower: 0.87
   frictionAmount: 0.25
   jumpRef: {fileID: -2631429694570221278}
+  animator: {fileID: 8196130189975783307}
+  spriteTransform: {fileID: 1673883142154973435}
+  wheelTransform: {fileID: 3413790321647068668}
 --- !u!114 &-2631429694570221278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1116,6 +1166,7 @@ MonoBehaviour:
   isRightWallSliding: 0
   wallFriction: -0.5
   wallJumpStrength: 14.14
+  animator: {fileID: 8196130189975783307}
 --- !u!114 &-4067997789090497217
 MonoBehaviour:
   m_ObjectHideFlags: 0
