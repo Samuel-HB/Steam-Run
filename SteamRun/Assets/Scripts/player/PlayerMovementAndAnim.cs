@@ -69,14 +69,14 @@ public class PlayerMovementAndAnim : MonoBehaviour
     }
 
     //new
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = new Color(1f, 0.75f, 0f, 0.75f);
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = new Color(1f, 0.75f, 0f, 0.75f);
 
-        Gizmos.DrawRay(groundCollider.transform.position, Vector2.right * 0.5f);
-        Gizmos.DrawRay(leftWallCollider.transform.position, Vector2.up * 1.25f);
-        Gizmos.DrawRay(rightWallCollider.transform.position, Vector2.up * 1.25f);
-    }
+    //    Gizmos.DrawRay(groundCollider.transform.position, Vector2.right * 0.5f);
+    //    Gizmos.DrawRay(leftWallCollider.transform.position, Vector2.up * 1.25f);
+    //    Gizmos.DrawRay(rightWallCollider.transform.position, Vector2.up * 1.25f);
+    //}
 
     private void FixedUpdate()
     {

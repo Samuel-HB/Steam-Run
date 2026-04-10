@@ -23,6 +23,23 @@ public class Jump : MonoBehaviour
     private float wallJumpStrengthRef;
 
     private LayerMask surface;
+
+
+    //new
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = new Color(1f, 0.75f, 0f, 0.75f);
+
+        Gizmos.DrawRay(groundCollider.transform.position, Vector2.right * 0.5f);
+        Gizmos.DrawRay(leftWallCollider.transform.position, Vector2.up * 1.25f);
+        Gizmos.DrawRay(rightWallCollider.transform.position, Vector2.up * 1.25f);
+
+        //previously all vectors were at 0.85f
+    }
+
+
+
+
     void Start()
     {
         jumpForceRef = jumpForce;
@@ -32,7 +49,7 @@ public class Jump : MonoBehaviour
 
     void FixedUpdate()
     {
-        RaycastHit2D ground = Physics2D.Raycast(groundCollider.transform.position, Vector2.right, 0.85f,surface);
+        RaycastHit2D ground = Physics2D.Raycast(groundCollider.transform.position, Vector2.right, 0.5f,surface);
         if (ground == true)
         {
             isGrounded = true;
@@ -43,7 +60,7 @@ public class Jump : MonoBehaviour
             isGrounded = false;           
         }
 
-        RaycastHit2D rightWall = Physics2D.Raycast(rightWallCollider.transform.position, Vector2.up, 0.85f,surface);
+        RaycastHit2D rightWall = Physics2D.Raycast(rightWallCollider.transform.position, Vector2.up, 1.25f,surface);
         if (rightWall == true)
         {
             isWallSliding = true;
@@ -58,7 +75,7 @@ public class Jump : MonoBehaviour
             isRightWallSliding = false;
         }
 
-            RaycastHit2D leftWall = Physics2D.Raycast(leftWallCollider.transform.position, Vector2.up, 0.85f, surface);
+            RaycastHit2D leftWall = Physics2D.Raycast(leftWallCollider.transform.position, Vector2.up, 1.25f, surface);
         if (leftWall == true)
         {
             isWallSliding = true;
