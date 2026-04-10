@@ -22,6 +22,12 @@ public class Jump : MonoBehaviour
     public float wallJumpStrength;
     private float wallJumpStrengthRef;
 
+    private bool canCoyoteJump;
+    public float jumpCoyoteTime;
+    private float lastGroundedTime;
+    public float BufferTime;
+    private float timeSinceSpacePress;
+
     private LayerMask surface;
 
     [SerializeField] private Animator animator;
@@ -47,7 +53,20 @@ public class Jump : MonoBehaviour
         RaycastHit2D ground = Physics2D.Raycast(groundCollider.transform.position, Vector2.right, 0.5f ,surface);
         if (ground == true)
         {
-            isGrounded = true;            
+            isGrounded = true;
+            lastGroundedTime = jumpCoyoteTime;
+            if (timeSinceSpacePress > 0)
+            {
+                playerRb.linearVelocityY = 0f;
+                jumpForce = jumpForceRef;
+                isJumping = true;
+                canCoyoteJump = false;
+                timeSinceSpacePress = -1;
+            }
+            if (isJumping == false)
+            {
+                canCoyoteJump = true;
+            }
         }
         else if (ground == false)
         {
@@ -65,6 +84,15 @@ public class Jump : MonoBehaviour
             {
                 playerRb.linearVelocityY = 0f;
                 isRightWallSliding = true;
+                if (timeSinceSpacePress > 0)
+                {
+                    playerRb.linearVelocityY = 0f;
+                    jumpForce = jumpForceRef;
+                    isJumping = true;
+                    wallJumpStrength = wallJumpStrengthRef;
+                    isRightWallJumping = true;
+                    timeSinceSpacePress = -1;
+                }
             }
         }
         else 
@@ -83,6 +111,15 @@ public class Jump : MonoBehaviour
             {
                 playerRb.linearVelocityY = 0f;
                 isLeftWallSliding = true;
+                if (timeSinceSpacePress > 0)
+                {
+                    playerRb.linearVelocityY = 0f;
+                    jumpForce = jumpForceRef;
+                    isJumping = true;
+                    isLeftWallJumping = true;
+                    wallJumpStrength = wallJumpStrengthRef;
+                    timeSinceSpacePress = -1;
+                }
             }           
         }
         else
@@ -99,19 +136,25 @@ public class Jump : MonoBehaviour
         {
             playerRb.AddForceY(wallFriction);
         }
+        lastGroundedTime -= Time.deltaTime;
+        timeSinceSpacePress -= Time.deltaTime;
+        if (lastGroundedTime < 0) 
+        {
+            canCoyoteJump = false;
+        }
         if (isJumping|| isRightWallJumping||isLeftWallJumping)
         {
             if (jumpForce > 0)
             {
-                playerRb.AddForceY(jumpForce * Time.deltaTime * Screen.width);
-                jumpForce -= 0.1f * Time.deltaTime * Screen.width;
+                playerRb.AddForceY(jumpForce * Time.deltaTime * 912);
+                jumpForce -= 0.1f * Time.deltaTime * 912;
             }
             if (isRightWallJumping)
             {
                 if (wallJumpStrength > 0)
                 {
-                    playerRb.AddForce(wallJumpStrength * Vector2.left * Time.deltaTime * Screen.width);
-                    wallJumpStrength -= 0.1f * Time.deltaTime * Screen.width;
+                    playerRb.AddForce(wallJumpStrength * Vector2.left * Time.deltaTime * 912);
+                    wallJumpStrength -= 0.1f * Time.deltaTime * 912;
                     print(wallJumpStrength);
                 }
             }
@@ -119,8 +162,8 @@ public class Jump : MonoBehaviour
             {
                 if (wallJumpStrength > 0)
                 {
-                    playerRb.AddForce(wallJumpStrength * Vector2.right * Time.deltaTime * Screen.width);
-                    wallJumpStrength -= 0.1f * Time.deltaTime * Screen.width;
+                    playerRb.AddForce(wallJumpStrength * Vector2.right * Time.deltaTime * 912);
+                    wallJumpStrength -= 0.1f * Time.deltaTime * 912;
                     print(wallJumpStrength);
                 }
             }
@@ -131,12 +174,13 @@ public class Jump : MonoBehaviour
     {
         if (_context.started)
         {
-            if (isGrounded)
+            if (isGrounded || canCoyoteJump == true)
             {
                 jumpForce = jumpForceRef;
                 isJumping = true;
+                canCoyoteJump = false;
             }
-            if (isGrounded == false && isWallSliding)
+            else if (isGrounded == false && isWallSliding)
             {
                 jumpForce = jumpForceRef;
                 wallJumpStrength = wallJumpStrengthRef;
@@ -149,12 +193,17 @@ public class Jump : MonoBehaviour
                     isRightWallJumping = true;
                 }
             }
+            else if (isGrounded == false && isWallSliding == false)
+            {
+                timeSinceSpacePress = BufferTime;
+            }
         }
         else if (_context.canceled)
         {
             isJumping = false;
             isLeftWallJumping = false;
             isRightWallJumping = false;
+            timeSinceSpacePress = 0; 
         }
     }
 }

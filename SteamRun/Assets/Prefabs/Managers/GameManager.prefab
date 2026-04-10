@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameMode
   player: {fileID: 0}
-  playerPrefab: {fileID: 7892128880217491502, guid: a3a8f4dc4ec177d41b69430e7e320114, type: 3}
+  playerPrefab: {fileID: 7892128880217491502, guid: c31bf1fbac3c27f42a1a220474a514a6, type: 3}
   startPosition: {fileID: 558060690216300247}
   endLevelPoint: {fileID: 9188884030658864486}
   nextLevel: {fileID: 102900000, guid: 37d67ed5ad307ce44b9a63a1762995e2, type: 3}

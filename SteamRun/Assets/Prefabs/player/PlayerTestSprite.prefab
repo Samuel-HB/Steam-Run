@@ -975,7 +975,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 1
   m_AngularDamping: 3
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1166,6 +1166,8 @@ MonoBehaviour:
   isRightWallSliding: 0
   wallFriction: -0.5
   wallJumpStrength: 14.14
+  jumpCoyoteTime: 0.1
+  BufferTime: 0.5
   animator: {fileID: 8196130189975783307}
 --- !u!114 &-4067997789090497217
 MonoBehaviour:
