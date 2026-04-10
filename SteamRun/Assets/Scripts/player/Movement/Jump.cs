@@ -23,18 +23,6 @@ public class Jump : MonoBehaviour
     private float wallJumpStrengthRef;
 
     private LayerMask surface;
-
-    [SerializeField] private Animator animator;
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = new Color(1f, 0.75f, 0f, 0.75f);
-
-        Gizmos.DrawRay(groundCollider.transform.position, Vector2.right * 0.5f);
-        Gizmos.DrawRay(leftWallCollider.transform.position, Vector2.up * 1.25f);
-        Gizmos.DrawRay(rightWallCollider.transform.position, Vector2.up * 1.25f);
-    }
-
     void Start()
     {
         jumpForceRef = jumpForce;
@@ -44,22 +32,20 @@ public class Jump : MonoBehaviour
 
     void FixedUpdate()
     {
-        RaycastHit2D ground = Physics2D.Raycast(groundCollider.transform.position, Vector2.right, 0.5f ,surface);
+        RaycastHit2D ground = Physics2D.Raycast(groundCollider.transform.position, Vector2.right, 0.85f,surface);
         if (ground == true)
         {
-            isGrounded = true;            
+            isGrounded = true;
+            
         }
         else if (ground == false)
         {
             isGrounded = false;           
         }
 
-        RaycastHit2D rightWall = Physics2D.Raycast(rightWallCollider.transform.position, Vector2.up, 1.25f ,surface);
+        RaycastHit2D rightWall = Physics2D.Raycast(rightWallCollider.transform.position, Vector2.up, 0.85f,surface);
         if (rightWall == true)
         {
-            //new
-            animator.SetBool("isGripping", true);
-
             isWallSliding = true;
             if (ground == false && playerRb.linearVelocityY < 0.1)
             {
@@ -72,12 +58,9 @@ public class Jump : MonoBehaviour
             isRightWallSliding = false;
         }
 
-        RaycastHit2D leftWall = Physics2D.Raycast(leftWallCollider.transform.position, Vector2.up, 1.25f ,surface);
+            RaycastHit2D leftWall = Physics2D.Raycast(leftWallCollider.transform.position, Vector2.up, 0.85f, surface);
         if (leftWall == true)
         {
-            //new
-            animator.SetBool("isGripping", true);
-
             isWallSliding = true;
             if (ground == false && playerRb.linearVelocityY <0.1)
             {
@@ -92,8 +75,6 @@ public class Jump : MonoBehaviour
         if(leftWall == false && rightWall == false)
         {
             isWallSliding = false;
-            //new
-            animator.SetBool("isGripping", false);
         }
         if (isWallSliding && isGrounded==false && playerRb.linearVelocityY <0.1)
         {

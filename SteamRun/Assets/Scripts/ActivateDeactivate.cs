@@ -7,7 +7,6 @@ public class ActivateDeactivate : MonoBehaviour
     [SerializeField] private BoxCollider2D coll;
     [SerializeField] private Move movementScript;
     [SerializeField] private Jump jumpScript;
-    [SerializeField] private ActivateDeactivateAnim animScript;
 
     private void Start()
     {
@@ -17,16 +16,15 @@ public class ActivateDeactivate : MonoBehaviour
 
         movementScript.enabled = false;
         jumpScript.enabled = false;
-        //rb.gravityScale = 1.9f;
+        rb.gravityScale = 1.9f;
     }
 
     private void Deactivate()
     {
-        animScript.RestartAnim();
         goSprite.SetActive(false);
         rb.linearVelocityX = 0f;
         rb.linearVelocityY = 0f;
-        //rb.gravityScale = 1.9f;
+        rb.gravityScale = 1.9f;
         rb.bodyType = RigidbodyType2D.Kinematic;
         coll.enabled = false;
         movementScript.enabled = false;
@@ -36,7 +34,6 @@ public class ActivateDeactivate : MonoBehaviour
     private void Activate()
     {
         goSprite.SetActive(true);
-        //animScript.RestartAnim2();
         rb.bodyType = RigidbodyType2D.Dynamic;
         coll.enabled = true;
     }
