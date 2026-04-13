@@ -9,6 +9,11 @@ public class GameMode : MonoBehaviour
 
     [SerializeField] private Transform startPosition;
     [SerializeField] private Transform endLevelPoint;
+    [SerializeField] private CameraManager cameraManagerRef;
+
+    // Scene Asset will prevent build game so use of string for load levels
+
+    //[SerializeField] private string levelName;
     [SerializeField] private SceneAsset nextLevel;
 
     private void Awake()
@@ -16,11 +21,13 @@ public class GameMode : MonoBehaviour
         EventManager.Instance.EndLevelReached += LoadNewLevel;
 
         player = Instantiate(playerPrefab, startPosition.position, Quaternion.identity);
+        cameraManagerRef.playerTransform = player.transform;
     }
 
     private void LoadNewLevel()
     {
         SceneManager.LoadScene(nextLevel.name);
+        //SceneManager.LoadScene(levelName);
     }
 
     private void OnDestroy()

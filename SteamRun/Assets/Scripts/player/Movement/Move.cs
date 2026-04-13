@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
+//new
+using System.Collections;
+
 
 public class Move : MonoBehaviour
 {
@@ -26,6 +29,7 @@ public class Move : MonoBehaviour
     [SerializeField] private Transform wheelTransform;
     private float spriteScale;
     private float invertedSpriteScale;
+    private bool canFlip = true;
 
     private void Start()
     {
@@ -34,6 +38,9 @@ public class Move : MonoBehaviour
         //new
         spriteScale = spriteTransform.localScale.x;
         invertedSpriteScale = spriteTransform.localScale.x * -1;
+
+        //new
+        EventManager.Instance.PlayerWallJump += StartWaitingBeforeFlip;
     }
     private void FixedUpdate()
     {
@@ -57,7 +64,6 @@ public class Move : MonoBehaviour
 
 
         //new
-
         if (inputDirection != 0)
         {
             animator.SetBool("isRunning", true);
@@ -65,17 +71,24 @@ public class Move : MonoBehaviour
         else {
             animator.SetBool("isRunning", false);
         }
-        print("inputDirection: " + inputDirection);
 
         wheelTransform.Rotate(0, 0, Mathf.Abs(inputDirection * moveSpeed) * -25 * Time.deltaTime);
 
         if (rb.linearVelocity.x > 0.1f) {
             spriteTransform.localScale = new Vector3(spriteScale,
                                                      spriteTransform.localScale.y, spriteTransform.localScale.z);
+            //new
+            if (canFlip == true) {
+                EventManager.Instance.PlayerFlipRightFunc();
+            }
         }
         else if (rb.linearVelocity.x < -0.1f) {
             spriteTransform.localScale = new Vector3(invertedSpriteScale,
                                                      spriteTransform.localScale.y, spriteTransform.localScale.z);
+            //new
+            if (canFlip == true) {
+                EventManager.Instance.PlayerFlipLeftFunc();
+            }
         }
     }
 
@@ -85,6 +98,9 @@ public class Move : MonoBehaviour
         {
             inputDirection = _context.ReadValue<float>();
             inputDirectionRef = _context.ReadValue<float>();
+
+            ////new
+            EventManager.Instance.PlayerMoveFunc();
         }
         else if (_context.canceled)
         {
@@ -103,5 +119,32 @@ public class Move : MonoBehaviour
         {
             moveSpeed = speed;
         }
+    }
+
+    //new
+    public void StartWaitingBeforeFlip()
+    {
+        StopAllCoroutines();
+        StartCoroutine(WaitBeforeFlip(1f));
+    }
+
+    //avoid camera flipping direction every time wall jump is made
+    IEnumerator WaitBeforeFlip(float duration)
+    {
+        canFlip = false;
+
+        float time = 0;
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            yield return null;
+        }
+        canFlip = true;
+    }
+
+    //new
+    private void OnDestroy()
+    {
+        EventManager.Instance.PlayerWallJump -= StartWaitingBeforeFlip;
     }
 }

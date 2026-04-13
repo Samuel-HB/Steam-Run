@@ -14,8 +14,11 @@ public class Jump : MonoBehaviour
     public float jumpForce;
     private float jumpForceRef;
     private bool isJumping;
-    private bool isRightWallJumping;
-    private bool isLeftWallJumping;
+
+    //now public
+    public bool isRightWallJumping;
+    public bool isLeftWallJumping;
+
     public bool isLeftWallSliding;
     public bool isRightWallSliding;
     public float wallFriction;
@@ -37,8 +40,8 @@ public class Jump : MonoBehaviour
         Gizmos.color = new Color(1f, 0.75f, 0f, 0.75f);
 
         Gizmos.DrawRay(groundCollider.transform.position, Vector2.right * 0.5f);
-        Gizmos.DrawRay(leftWallCollider.transform.position, Vector2.up * 1.25f);
-        Gizmos.DrawRay(rightWallCollider.transform.position, Vector2.up * 1.25f);
+        Gizmos.DrawRay(leftWallCollider.transform.position, Vector2.up * 1.35f);
+        Gizmos.DrawRay(rightWallCollider.transform.position, Vector2.up * 1.35f);
     }
 
     void Start()
@@ -73,7 +76,7 @@ public class Jump : MonoBehaviour
             isGrounded = false;           
         }
 
-        RaycastHit2D rightWall = Physics2D.Raycast(rightWallCollider.transform.position, Vector2.up, 1.25f ,surface);
+        RaycastHit2D rightWall = Physics2D.Raycast(rightWallCollider.transform.position, Vector2.up, 1.35f ,surface);
         if (rightWall == true)
         {
             //new
@@ -91,6 +94,9 @@ public class Jump : MonoBehaviour
                     isJumping = true;
                     wallJumpStrength = wallJumpStrengthRef;
                     isRightWallJumping = true;
+                    //new
+                    EventManager.Instance.PlayerWallJumpFunc();
+
                     timeSinceSpacePress = -1;
                 }
             }
@@ -100,7 +106,7 @@ public class Jump : MonoBehaviour
             isRightWallSliding = false;
         }
 
-        RaycastHit2D leftWall = Physics2D.Raycast(leftWallCollider.transform.position, Vector2.up, 1.25f ,surface);
+        RaycastHit2D leftWall = Physics2D.Raycast(leftWallCollider.transform.position, Vector2.up, 1.35f ,surface);
         if (leftWall == true)
         {
             //new
@@ -117,6 +123,9 @@ public class Jump : MonoBehaviour
                     jumpForce = jumpForceRef;
                     isJumping = true;
                     isLeftWallJumping = true;
+                    //new
+                    EventManager.Instance.PlayerWallJumpFunc();
+
                     wallJumpStrength = wallJumpStrengthRef;
                     timeSinceSpacePress = -1;
                 }
@@ -155,7 +164,6 @@ public class Jump : MonoBehaviour
                 {
                     playerRb.AddForce(wallJumpStrength * Vector2.left * Time.deltaTime * 912);
                     wallJumpStrength -= 0.1f * Time.deltaTime * 912;
-                    print(wallJumpStrength);
                 }
             }
             if (isLeftWallJumping)
@@ -164,7 +172,6 @@ public class Jump : MonoBehaviour
                 {
                     playerRb.AddForce(wallJumpStrength * Vector2.right * Time.deltaTime * 912);
                     wallJumpStrength -= 0.1f * Time.deltaTime * 912;
-                    print(wallJumpStrength);
                 }
             }
         }
@@ -187,10 +194,14 @@ public class Jump : MonoBehaviour
                 if (isLeftWallSliding)
                 {
                     isLeftWallJumping = true;
+                    //new
+                    EventManager.Instance.PlayerWallJumpFunc();
                 }
                 if (isRightWallSliding)
                 {
                     isRightWallJumping = true;
+                    //new
+                    EventManager.Instance.PlayerWallJumpFunc();
                 }
             }
             else if (isGrounded == false && isWallSliding == false)
