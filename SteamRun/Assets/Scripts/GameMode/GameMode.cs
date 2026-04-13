@@ -10,11 +10,7 @@ public class GameMode : MonoBehaviour
     [SerializeField] private Transform startPosition;
     [SerializeField] private Transform endLevelPoint;
     [SerializeField] private CameraManager cameraManagerRef;
-
-    // Scene Asset will prevent build game so use of string for load levels
-
-    //[SerializeField] private string levelName;
-    [SerializeField] private SceneAsset nextLevel;
+    [SerializeField] private string nextLevel;
 
     private void Awake()
     {
@@ -26,8 +22,7 @@ public class GameMode : MonoBehaviour
 
     private void LoadNewLevel()
     {
-        SceneManager.LoadScene(nextLevel.name);
-        //SceneManager.LoadScene(levelName);
+        SceneManager.LoadScene(nextLevel);
     }
 
     private void OnDestroy()

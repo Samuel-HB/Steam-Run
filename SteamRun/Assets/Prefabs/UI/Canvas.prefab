@@ -1419,7 +1419,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseMenu
   containerPause: {fileID: 3087985893834735810}
-  mainMenu: {fileID: 102900000, guid: da81c086c30c15a4ca00010f6dcc9d6c, type: 3}
+  mainMenu: MainMenu
+  worldSelection: Worlds Selection
 --- !u!1 &6843299833405239214
 GameObject:
   m_ObjectHideFlags: 0

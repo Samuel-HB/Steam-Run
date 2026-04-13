@@ -4,10 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu: MonoBehaviour
 {
-    // Scene Asset will prevent build game so use of string for load levels
-
-    //[SerializeField] private string levelName;
-    [SerializeField] private SceneAsset nextLevel;
+    [SerializeField] private string nextLevel;
 
     private void Start()
     {
@@ -18,8 +15,7 @@ public class MainMenu: MonoBehaviour
 
     public void LoadGame()
     {
-        SceneManager.LoadScene(nextLevel.name);
-        //SceneManager.LoadScene(levelName);
+        SceneManager.LoadScene(nextLevel);
         Cursor.visible = false;
     }
 
