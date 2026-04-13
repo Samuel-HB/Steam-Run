@@ -50,4 +50,9 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene(mainMenu.name);
     }
+    public void RestartLevel()
+    {
+        EventManager.Instance.PlayerDeathFunc();
+        ResumeGame();
+    }
 }
