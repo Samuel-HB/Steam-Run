@@ -300,7 +300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b221903bc34f043499f3015279de301b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelSelection
-  nextLevel: Level_5_3
+  nextLevel: World_5 Selection
 --- !u!4 &500487112
 Transform:
   m_ObjectHideFlags: 0
@@ -2089,7 +2089,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b221903bc34f043499f3015279de301b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelSelection
-  nextLevel: Level_2_3
+  nextLevel: World_2 Selection
 --- !u!4 &614545938
 Transform:
   m_ObjectHideFlags: 0
@@ -3060,7 +3060,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b221903bc34f043499f3015279de301b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelSelection
-  nextLevel: Level_4_3
+  nextLevel: World_4 Selection
 --- !u!4 &1050734882
 Transform:
   m_ObjectHideFlags: 0
@@ -3603,7 +3603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b221903bc34f043499f3015279de301b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelSelection
-  nextLevel: Level_1_3
+  nextLevel: World_1 Selection
 --- !u!4 &1204744377
 Transform:
   m_ObjectHideFlags: 0
@@ -4132,7 +4132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b221903bc34f043499f3015279de301b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelSelection
-  nextLevel: Level_3_3
+  nextLevel: World_3 Selection
 --- !u!4 &1877756855
 Transform:
   m_ObjectHideFlags: 0
