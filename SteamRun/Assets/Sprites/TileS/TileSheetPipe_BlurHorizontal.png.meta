@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9645897320c57544a855030f1ab9a254
+guid: dbb6a1e308ba8574eae105ad9b36a193
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1335233696957623650
-    second: TileSheet_Pipe_0
+      213: 1287587824503765844
+    second: TileSheetPipe_BlurHorizontal_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -38,7 +38,7 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: 3
+    aniso: 1
     mipBias: 0
     wrapU: 1
     wrapV: 1
@@ -100,11 +100,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TileSheet_Pipe_0
+      name: TileSheetPipe_BlurHorizontal_0
       rect:
         serializedVersion: 2
-        x: 373
-        y: 800
+        x: 0
+        y: 0
         width: 227
         height: 200
       alignment: 0
@@ -114,23 +114,24 @@ TextureImporter:
       outline: []
       physicsShape:
       - - {x: 113.5, y: 100}
-        - {x: -86.5, y: 100}
-        - {x: -86.5, y: -100}
+        - {x: -87.5, y: 100}
+        - {x: -87.5, y: -94}
+        - {x: -81.5, y: -100}
         - {x: 113.5, y: -100}
       tessellationDetail: 0
       bones: []
-      spriteID: e9295b8e60c487de0800000000000000
-      internalID: -1335233696957623650
+      spriteID: fcca17f96a16fad49bd9fc1ccd065d3a
+      internalID: 1287587824503765844
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TileSheet_Pipe_1
+      name: TileSheetPipe_BlurHorizontal_1
       rect:
         serializedVersion: 2
-        x: 600
-        y: 800
+        x: 227
+        y: 0
         width: 227
         height: 200
       alignment: 0
@@ -139,102 +140,15 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape:
-      - - {x: 86.5, y: 100}
+      - - {x: 87.5, y: -94}
+        - {x: 87.5, y: 100}
         - {x: -113.5, y: 100}
         - {x: -113.5, y: -100}
-        - {x: 86.5, y: -100}
+        - {x: 82.5, y: -100}
       tessellationDetail: 0
       bones: []
-      spriteID: 9bb974bfc5874634190c85d78b2154d9
-      internalID: 1792922716
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TileSheet_Pipe_2
-      rect:
-        serializedVersion: 2
-        x: 373
-        y: 600
-        width: 227
-        height: 200
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b4825cd153e6187429450a159b6e8d5b
-      internalID: -2111100519
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TileSheet_Pipe_3
-      rect:
-        serializedVersion: 2
-        x: 600
-        y: 600
-        width: 227
-        height: 200
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 35c6d7f1e40f8e745ae1d1e01c45dfb1
-      internalID: 1043370561
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TileSheet_Pipe_4
-      rect:
-        serializedVersion: 2
-        x: 373
-        y: 400
-        width: 227
-        height: 200
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 34f5deb68dd2db94090f07df97514b5a
-      internalID: 575641406
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TileSheet_Pipe_5
-      rect:
-        serializedVersion: 2
-        x: 600
-        y: 400
-        width: 227
-        height: 200
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5f783367a5ad5374790da40729b3dfaf
-      internalID: 1272624586
+      spriteID: 43fb4ddc9ff900d43b3cd380abc0636c
+      internalID: 998409656
       vertices: []
       indices: 
       edges: []
@@ -243,7 +157,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 19c142f22a0999b42b29fb117e7a3af9
+    spriteID: 81771670030614c4988998ec82b90a6d
     internalID: 0
     vertices: []
     indices: 
@@ -253,14 +167,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":227.0,"y":200.0},"gridSpriteOffset":{"x":373.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":227.0,"y":200.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      TileSheet_Pipe_0: -1335233696957623650
-      TileSheet_Pipe_1: 1792922716
-      TileSheet_Pipe_2: -2111100519
-      TileSheet_Pipe_3: 1043370561
-      TileSheet_Pipe_4: 575641406
-      TileSheet_Pipe_5: 1272624586
+      TileSheetPipe_BlurHorizontal_0: 1287587824503765844
+      TileSheetPipe_BlurHorizontal_1: 998409656
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
