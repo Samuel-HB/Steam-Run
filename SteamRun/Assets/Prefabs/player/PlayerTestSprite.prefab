@@ -1100,7 +1100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Move
   speed: 15
-  sprintSpeed: 25
+  sprintSpeed: 20
   maxSpeed: 8
   rb: {fileID: 8171056642438542092}
   Acceleration: 8
