@@ -6,7 +6,8 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject containerPause;
     public static bool isGamePaused = false;
-    [SerializeField] private SceneAsset mainMenu;
+    [SerializeField] private string mainMenu;
+    [SerializeField] private string worldSelection;
 
     private void Start()
     {
@@ -48,11 +49,16 @@ public class PauseMenu : MonoBehaviour
         isGamePaused = false;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        SceneManager.LoadScene(mainMenu.name);
+        SceneManager.LoadScene(mainMenu);
     }
     public void RestartLevel()
     {
         EventManager.Instance.PlayerDeathFunc();
         ResumeGame();
     }
+    public void GoToWorldSelection()
+    {
+        SceneManager.LoadScene(worldSelection);
+    }
+
 }

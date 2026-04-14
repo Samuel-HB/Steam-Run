@@ -409,7 +409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 431ad28acf90bf24abbca2984906ff9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenu
-  nextLevel: {fileID: 102900000, guid: a883c02b69c15a84db176e2fe9c0897f, type: 3}
+  nextLevel: Worlds Selection
 --- !u!1 &885525067
 GameObject:
   m_ObjectHideFlags: 0
