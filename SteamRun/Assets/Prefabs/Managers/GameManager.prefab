@@ -81,7 +81,8 @@ MonoBehaviour:
   playerPrefab: {fileID: 7892128880217491502, guid: c31bf1fbac3c27f42a1a220474a514a6, type: 3}
   startPosition: {fileID: 558060690216300247}
   endLevelPoint: {fileID: 9188884030658864486}
-  nextLevel: {fileID: 102900000, guid: 37d67ed5ad307ce44b9a63a1762995e2, type: 3}
+  cameraManagerRef: {fileID: 0}
+  containerVictory: {fileID: 5452241377423532401, guid: 087a17b539bf3fb4fb9ae12b8fec150d, type: 3}
 --- !u!114 &6673059579490007922
 MonoBehaviour:
   m_ObjectHideFlags: 0

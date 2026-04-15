@@ -17,7 +17,6 @@ public class ActivateDeactivate : MonoBehaviour
 
         movementScript.enabled = false;
         jumpScript.enabled = false;
-        //rb.gravityScale = 1.9f;
     }
 
     private void Deactivate()
@@ -26,7 +25,6 @@ public class ActivateDeactivate : MonoBehaviour
         goSprite.SetActive(false);
         rb.linearVelocityX = 0f;
         rb.linearVelocityY = 0f;
-        //rb.gravityScale = 1.9f;
         rb.bodyType = RigidbodyType2D.Kinematic;
         coll.enabled = false;
         movementScript.enabled = false;
