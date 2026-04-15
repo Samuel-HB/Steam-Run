@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,6 +8,8 @@ public class LevelSelection : MonoBehaviour
     [SerializeField] private string nextLevel;
     [SerializeField] private int world;
     [SerializeField] private int level;
+    [SerializeField] private List<Sprite> sprite;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     private bool isOpen =false;
 
 
@@ -35,6 +38,11 @@ public class LevelSelection : MonoBehaviour
         if (GameMode.currentMaxWorld >= world && GameMode.currentMaxLevel >= level)
         {
             isOpen = true;
+            spriteRenderer.sprite = sprite[1];
+        }
+        else
+        {
+            spriteRenderer.sprite = sprite[0];
         }
     }
 
