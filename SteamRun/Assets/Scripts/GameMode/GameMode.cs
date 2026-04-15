@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameMode : MonoBehaviour
 {
@@ -12,22 +11,34 @@ public class GameMode : MonoBehaviour
     [SerializeField] private string nextLevel;
     public static int currentWorld = 1;
     public static int currentLevel = 1;
+    [SerializeField] private GameObject containerVictory;
+    public static bool isGamePaused = false;
 
     private void Awake()
     {
-        EventManager.Instance.EndLevelReached += LoadNewLevel;
+        EventManager.Instance.EndLevelReached += ShowVictoryContainer;
+
         player = Instantiate(playerPrefab, startPosition.position, Quaternion.identity);
         cameraManagerRef.playerTransform = player.transform;
     }
 
-    private void LoadNewLevel()
+    private void Start()
     {
-        SceneManager.LoadScene(nextLevel);
+        containerVictory.SetActive(false);
+    }
+
+    private void ShowVictoryContainer()
+    {
+        Time.timeScale = 0;
+        containerVictory.SetActive(true);
+        isGamePaused = true;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     private void OnDestroy()
     {
-        EventManager.Instance.EndLevelReached -= LoadNewLevel;
+        EventManager.Instance.EndLevelReached -= ShowVictoryContainer;
     }
 
     private void Update()
