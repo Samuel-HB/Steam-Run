@@ -2158,6 +2158,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Timer
   timerText: {fileID: 3239777963461786240}
+  second: 0
+  minute: 0
+  hour: 0
+  victoryMenu: {fileID: 2511947368442047014}
 --- !u!114 &2824618915238816859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2186,6 +2190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VictoryMenu
   containerVictory: {fileID: 4373778015116825413}
+  timerText: {fileID: 5084433394980801173}
 --- !u!1 &5944428539157371490
 GameObject:
   m_ObjectHideFlags: 0

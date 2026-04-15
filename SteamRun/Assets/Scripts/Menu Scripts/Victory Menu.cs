@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -5,6 +6,7 @@ public class VictoryMenu : MonoBehaviour
 {
     [SerializeField] private GameObject containerVictory;
     public static bool isGameVictoryOn = false;
+    [SerializeField] private TMP_Text timerText;
     void Start()
     {
         EventManager.Instance.EndLevelReached += SetVictoryMenu;
@@ -43,6 +45,9 @@ public class VictoryMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         isGameVictoryOn = false;
         SceneManager.LoadScene("MainMenu");
-
+    }
+    public void SetTimer(int hour, int minute , int second)
+    {
+        timerText.text = hour.ToString("") + ":" + minute.ToString("") + ":" + second.ToString("");
     }
 }
