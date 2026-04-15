@@ -1,40 +1,56 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameMode : MonoBehaviour
 {
-    public GameObject player;
+    [HideInInspector ] public GameObject player;
     [SerializeField] private GameObject playerPrefab;
-
     [SerializeField] private Transform startPosition;
     [SerializeField] private Transform endLevelPoint;
     [SerializeField] private CameraManager cameraManagerRef;
-    [SerializeField] private GameObject containerVictory;
-    public static bool isGamePaused = false;
+    [SerializeField] private string nextLevel;
+    public static int currentMaxWorld = 1;
+    public static int currentMaxLevel = 1;
+    [SerializeField] private int level;
+    [SerializeField] private int world;
+
 
     private void Awake()
     {
-        EventManager.Instance.EndLevelReached += ShowVictoryContainer;
-
+        Time.timeScale = 1;
         player = Instantiate(playerPrefab, startPosition.position, Quaternion.identity);
         cameraManagerRef.playerTransform = player.transform;
+        EventManager.Instance.EndLevelReached += SetCurrentMaxLevel;
+        EventManager.Instance.GoNextLevel += LoadLevel;
     }
-
     private void Start()
     {
-        containerVictory.SetActive(false);
+        if (world > currentMaxWorld)
+        {
+            currentMaxWorld = world;
+            currentMaxLevel = level;
+        }
+        if (world == currentMaxWorld)
+        {
+            if (level > currentMaxLevel)
+            {
+                currentMaxLevel = level;
+            }
+        }
+        print(currentMaxLevel);
+        print(currentMaxWorld);
     }
-
-    private void ShowVictoryContainer()
-    {
-        Time.timeScale = 0;
-        containerVictory.SetActive(true);
-        isGamePaused = true;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-    }
-
     private void OnDestroy()
     {
-        EventManager.Instance.EndLevelReached -= ShowVictoryContainer;
+        EventManager.Instance.EndLevelReached -= SetCurrentMaxLevel;
+        EventManager.Instance.GoNextLevel -= LoadLevel;
+    }
+    private void LoadLevel()
+    {
+        SceneManager.LoadScene(nextLevel);
+    }
+    private void SetCurrentMaxLevel()
+    {
+        
     }
 }
