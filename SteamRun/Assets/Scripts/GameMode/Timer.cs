@@ -11,12 +11,17 @@ public class Timer : MonoBehaviour
     private int hour = 0;
     private bool showMinute = false;
     private bool showHour = false;
+    private Color timerColor;
+
 
     private void Start()
     {
         EventManager.Instance.AbleToPlay += CallStartTimer;
         EventManager.Instance.PlayerDeath += StopTimer;
+        EventManager.Instance.EndLevelReached += StopTimer;
+        EventManager.Instance.EndLevelReached += HideTimer;
 
+        timerColor = timerText.color;
         ResetTimer();
     }
 
@@ -44,6 +49,12 @@ public class Timer : MonoBehaviour
     private void ResetTimer()
     {
         timerText.text = "00";
+    }
+
+    private void HideTimer()
+    {
+        timerColor.a = 0f;
+        timerText.color = timerColor;
     }
 
     IEnumerator StartTimer()
@@ -82,5 +93,7 @@ public class Timer : MonoBehaviour
     {
         EventManager.Instance.AbleToPlay -= CallStartTimer;
         EventManager.Instance.PlayerDeath -= StopTimer;
+        EventManager.Instance.EndLevelReached -= StopTimer;
+        EventManager.Instance.EndLevelReached -= HideTimer;
     }
 }

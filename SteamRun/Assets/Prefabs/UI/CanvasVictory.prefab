@@ -962,7 +962,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6737975668793916193}
   m_Layer: 5
-  m_Name: Container Pause Menu
+  m_Name: Container Victory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1349,7 +1349,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseMenu
   containerPause: {fileID: 3087985893834735810}
-  mainMenu: {fileID: 102900000, guid: da81c086c30c15a4ca00010f6dcc9d6c, type: 3}
+  mainMenu: 
+  worldSelection: 
 --- !u!1 &6843299833405239214
 GameObject:
   m_ObjectHideFlags: 0
