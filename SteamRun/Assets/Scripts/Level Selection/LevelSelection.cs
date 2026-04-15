@@ -32,7 +32,7 @@ public class LevelSelection : MonoBehaviour
     private void Start()
     {
         EventManager.Instance.Interact += GoToLevel;
-        if (GameMode.currentWorld >= world && GameMode.currentLevel >= level)
+        if (GameMode.currentMaxWorld >= world && GameMode.currentMaxLevel >= level)
         {
             isOpen = true;
         }
