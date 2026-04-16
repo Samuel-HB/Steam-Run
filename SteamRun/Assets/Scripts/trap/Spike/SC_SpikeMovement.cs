@@ -36,7 +36,11 @@ public class SC_SpikeMovement : MonoBehaviour
                 LayerIndex = 1;
                 childrenGameObject.layer = LayerMask.NameToLayer("Default");
                 SetLayer();
-                if(isOnWall == true)
+                if (isOnGround == true) 
+                {
+                    transform.position = new Vector2(transform.position.x, transform.position.y - 1);
+                }
+                else if(isOnWall == true)
                 {
                     if(isOnLeftWall == true)
                     {
