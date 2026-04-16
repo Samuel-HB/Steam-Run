@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject containerPause;
-    public static bool isGamePaused = false;
+    private bool isGamePaused = false;
     [SerializeField] private string mainMenu;
     [SerializeField] private string worldSelection;
 
@@ -16,13 +16,16 @@ public class PauseMenu : MonoBehaviour
     }
     private void PauseHasBeenUsed()
     {
-        if (isGamePaused)
+        if (VictoryMenu.isGameVictoryOn == false)
         {
-            ResumeGame();
-        }
-        else 
-        {
-            PausedGame();
+            if (isGamePaused)
+            {
+                ResumeGame();
+            }
+            else 
+            {
+                PausedGame();
+            }
         }
     }
     public void PausedGame()
@@ -58,6 +61,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void GoToWorldSelection()
     {
+        ResumeGame();
         SceneManager.LoadScene(worldSelection);
     }
 

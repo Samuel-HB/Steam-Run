@@ -6,12 +6,13 @@ public class Timer : MonoBehaviour
 {
     public TMP_Text timerText;
     private IEnumerator timer;
-    private int second = 0;
-    private int minute = 0;
-    private int hour = 0;
+    public int second = 0;
+    public int minute = 0;
+    public int hour = 0;
     private bool showMinute = false;
     private bool showHour = false;
     private Color timerColor;
+    [SerializeField] private VictoryMenu victoryMenu;
 
 
     private void Start()
@@ -20,6 +21,7 @@ public class Timer : MonoBehaviour
         EventManager.Instance.PlayerDeath += StopTimer;
         EventManager.Instance.EndLevelReached += StopTimer;
         EventManager.Instance.EndLevelReached += HideTimer;
+        EventManager.Instance.EndLevelReached += setVictoryTimer;
 
         timerColor = timerText.color;
         ResetTimer();
@@ -55,6 +57,10 @@ public class Timer : MonoBehaviour
     {
         timerColor.a = 0f;
         timerText.color = timerColor;
+    }
+    private void setVictoryTimer()
+    {
+        victoryMenu.SetTimer(hour,minute, second);
     }
 
     IEnumerator StartTimer()
@@ -95,5 +101,6 @@ public class Timer : MonoBehaviour
         EventManager.Instance.PlayerDeath -= StopTimer;
         EventManager.Instance.EndLevelReached -= StopTimer;
         EventManager.Instance.EndLevelReached -= HideTimer;
+        EventManager.Instance.EndLevelReached -= setVictoryTimer;
     }
 }

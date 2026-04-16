@@ -9,6 +9,7 @@ public class EventManager : MonoBehaviour
     public event Action RestartLevel;
     public event Action PlayerDeath;
     public event Action EndLevelReached;
+    public event Action GoNextLevel;
     public event Action AbleToPlay;
     public event Action PauseGame;
     public event Action Interact;
@@ -41,6 +42,10 @@ public class EventManager : MonoBehaviour
     public void StartLevelFunc()
     {
         RestartLevel.Invoke();
+    }
+    public void NextLevelFunc()
+    {
+        GoNextLevel.Invoke();
     }
 
     public void PlayerDeathFunc()
