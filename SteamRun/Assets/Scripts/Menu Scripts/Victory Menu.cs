@@ -44,7 +44,7 @@ public class VictoryMenu : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         isGameVictoryOn = false;
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("Worlds Selection");
     }
     public void SetTimer(int hour, int minute , int second)
     {
