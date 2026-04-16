@@ -2374,6 +2374,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3552070345232021547, guid: e4d62731f1968444787936102fb63000, type: 3}
+      propertyPath: world
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3552070345232021547, guid: e4d62731f1968444787936102fb63000, type: 3}
       propertyPath: nextLevel
       value: World_5 Selection
       objectReference: {fileID: 0}
@@ -3680,6 +3684,10 @@ PrefabInstance:
     - target: {fileID: 3552070345232021547, guid: e4d62731f1968444787936102fb63000, type: 3}
       propertyPath: level
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3552070345232021547, guid: e4d62731f1968444787936102fb63000, type: 3}
+      propertyPath: world
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3552070345232021547, guid: e4d62731f1968444787936102fb63000, type: 3}
       propertyPath: nextLevel
