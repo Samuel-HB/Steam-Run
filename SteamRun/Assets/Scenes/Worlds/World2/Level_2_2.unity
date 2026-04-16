@@ -509,6 +509,7 @@ MonoBehaviour:
   isMoving: 1
   speed: 1.2
   isInGround: 0
+  isOnGround: 0
   isOnWall: 0
   isOnLeftWall: 0
   layers:
@@ -3297,6 +3298,7 @@ MonoBehaviour:
   isMoving: 1
   speed: 1.2
   isInGround: 0
+  isOnGround: 0
   isOnWall: 1
   isOnLeftWall: 0
   layers:
@@ -3674,6 +3676,7 @@ MonoBehaviour:
   isMoving: 1
   speed: 1.2
   isInGround: 1
+  isOnGround: 0
   isOnWall: 0
   isOnLeftWall: 0
   layers:
@@ -4788,6 +4791,7 @@ MonoBehaviour:
   isMoving: 1
   speed: 1.2
   isInGround: 1
+  isOnGround: 0
   isOnWall: 1
   isOnLeftWall: 0
   layers:
@@ -5142,6 +5146,7 @@ MonoBehaviour:
   isMoving: 1
   speed: 1.2
   isInGround: 0
+  isOnGround: 0
   isOnWall: 1
   isOnLeftWall: 1
   layers:
@@ -5232,11 +5237,11 @@ PrefabInstance:
       objectReference: {fileID: 1776295979}
     - target: {fileID: 9188884030658864486, guid: 5da15fa5f8f141f479a4a2a8fdf560c1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 36.41
+      value: 16.07
       objectReference: {fileID: 0}
     - target: {fileID: 9188884030658864486, guid: 5da15fa5f8f141f479a4a2a8fdf560c1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.59
+      value: -5.81
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
