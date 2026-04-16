@@ -1247,7 +1247,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 3
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 4
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2274,9 +2274,9 @@ Tilemap:
     m_Data: {fileID: 46259854, guid: 41ac2d8eec0e9244b9ee625947d8d539, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 5
+  - m_RefCount: 6
     m_Data: {fileID: -1986516112, guid: 41ac2d8eec0e9244b9ee625947d8d539, type: 3}
-  - m_RefCount: 14
+  - m_RefCount: 13
     m_Data: {fileID: -1397518435, guid: 41ac2d8eec0e9244b9ee625947d8d539, type: 3}
   - m_RefCount: 4
     m_Data: {fileID: -5623162211878112256, guid: 5da3f62c5232ccb4694f1ca7b7abc84e, type: 3}
@@ -2512,10 +2512,10 @@ CompositeCollider2D:
       - X: 150842512
         Y: -31050000
       - X: 150842512
-        Y: -18950000
-      - X: 148042496
-        Y: -18950000
-      - X: 148042496
+        Y: -20050002
+      - X: 149375008
+        Y: -20050002
+      - X: 149375008
         Y: -20000000
       - X: 120000000
         Y: -20000000
@@ -2545,12 +2545,12 @@ CompositeCollider2D:
         Y: 20000000
       - X: 190000000
         Y: -20000000
-      - X: 172078496
+      - X: 170624992
         Y: -20000000
-      - X: 172078496
-        Y: -18950000
+      - X: 170624992
+        Y: -20050002
       - X: 169278512
-        Y: -18950000
+        Y: -20050002
       - X: 169278512
         Y: -31050000
       - X: 169400000
@@ -2604,9 +2604,9 @@ CompositeCollider2D:
     - - {x: 15.069971, y: -11}
       - {x: 15.070029, y: -3.105}
       - {x: 15.084251, y: -3.104971}
-      - {x: 15.084223, y: -1.895}
-      - {x: 14.80425, y: -1.8950292}
-      - {x: 14.804221, y: -2}
+      - {x: 15.084223, y: -2.005}
+      - {x: 14.937501, y: -2.0049708}
+      - {x: 14.937472, y: -2}
       - {x: 12, y: -1.9999707}
       - {x: 11.99997, y: 4}
       - {x: 9, y: 3.999971}
@@ -2621,9 +2621,9 @@ CompositeCollider2D:
       - {x: 14.000029, y: 2}
       - {x: 19, y: 1.9999707}
       - {x: 18.999971, y: -2}
-      - {x: 17.20785, y: -1.9999707}
-      - {x: 17.20782, y: -1.895}
-      - {x: 16.92785, y: -1.8950292}
+      - {x: 17.0625, y: -2.0000293}
+      - {x: 17.062471, y: -2.005}
+      - {x: 16.92785, y: -2.0050297}
       - {x: 16.92788, y: -3.105}
       - {x: 16.94, y: -3.1050293}
       - {x: 16.94003, y: -11}
@@ -4440,7 +4440,7 @@ Transform:
   m_GameObject: {fileID: 1359181201}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5213,6 +5213,14 @@ PrefabInstance:
     - target: {fileID: 4569534599668682332, guid: 5da15fa5f8f141f479a4a2a8fdf560c1, type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5643799482288889470, guid: 5da15fa5f8f141f479a4a2a8fdf560c1, type: 3}
+      propertyPath: level
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5643799482288889470, guid: 5da15fa5f8f141f479a4a2a8fdf560c1, type: 3}
+      propertyPath: world
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5643799482288889470, guid: 5da15fa5f8f141f479a4a2a8fdf560c1, type: 3}
       propertyPath: nextLevel
