@@ -48,6 +48,6 @@ public class VictoryMenu : MonoBehaviour
     }
     public void SetTimer(int hour, int minute , int second)
     {
-        timerText.text = hour.ToString("") + ":" + minute.ToString("") + ":" + second.ToString("");
+        timerText.text = hour.ToString("00") + ":" + minute.ToString("00") + ":" + second.ToString("00");
     }
 }
