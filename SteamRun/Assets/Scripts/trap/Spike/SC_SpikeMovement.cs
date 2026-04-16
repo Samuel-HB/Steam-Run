@@ -7,6 +7,7 @@ public class SC_SpikeMovement : MonoBehaviour
     public bool isMoving =false;
     [SerializeField] private float speed;
     [SerializeField] private bool isInGround;
+    [SerializeField] private bool isOnGround;
     [SerializeField] private bool isOnWall;
     [SerializeField] private bool isOnLeftWall;
     private float direction = 0.1f;
@@ -82,7 +83,14 @@ public class SC_SpikeMovement : MonoBehaviour
             {
 
                 Vector2 newPos = transform.position;
-                newPos.y += direction;
+                if (isOnGround)
+                {
+                    newPos.y -= direction;
+                }
+                else
+                {
+                    newPos.y += direction;
+                }
                 transform.position = newPos;
                 yield return new WaitForSeconds(0.005f);
             }
