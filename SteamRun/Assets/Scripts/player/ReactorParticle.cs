@@ -7,6 +7,13 @@ public class ReactorParticle : MonoBehaviour
 
     private void Start()
     {
+        EventManager.Instance.RestartLevel += DirectlyEndSmoke;
+
+        DirectlyEndSmoke();
+    }
+
+    public void DirectlyEndSmoke()
+    {
         if (smoke.isPlaying == true) {
             smoke.Stop();
         }
@@ -36,5 +43,10 @@ public class ReactorParticle : MonoBehaviour
         if (smoke.isPlaying == true) {
             smoke.Stop();
         }
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.Instance.RestartLevel -= DirectlyEndSmoke;
     }
 }
