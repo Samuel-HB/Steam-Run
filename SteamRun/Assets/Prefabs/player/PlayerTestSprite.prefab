@@ -5950,7 +5950,7 @@ MonoBehaviour:
   sprintSpeed: 20
   maxSpeed: 8
   rb: {fileID: 8171056642438542092}
-  Acceleration: 8
+  acceleration: 8
   deceleration: 24
   velPower: 0.87
   frictionAmount: 0.25
@@ -5982,7 +5982,6 @@ MonoBehaviour:
   wallFriction: -0.5
   wallJumpStrength: 14.14
   jumpCoyoteTime: 0.1
-  BufferTime: 0.5
   animator: {fileID: 8196130189975783307}
   reactorParticleRef: {fileID: 6522061973537092852}
 --- !u!114 &6522061973537092852

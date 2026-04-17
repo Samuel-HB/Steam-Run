@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class GameMode : MonoBehaviour
 {
-    [HideInInspector ] public GameObject player;
+    [HideInInspector] public GameObject player;
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private Transform startPosition;
     [SerializeField] private Transform endLevelPoint;
@@ -20,7 +20,6 @@ public class GameMode : MonoBehaviour
         Time.timeScale = 1;
         player = Instantiate(playerPrefab, startPosition.position, Quaternion.identity);
         cameraManagerRef.playerTransform = player.transform;
-        EventManager.Instance.EndLevelReached += SetCurrentMaxLevel;
         EventManager.Instance.GoNextLevel += LoadLevel;
     }
     private void Start()
@@ -37,20 +36,13 @@ public class GameMode : MonoBehaviour
                 currentMaxLevel = level;
             }
         }
-        print(currentMaxLevel);
-        print(currentMaxWorld);
     }
     private void OnDestroy()
     {
-        EventManager.Instance.EndLevelReached -= SetCurrentMaxLevel;
         EventManager.Instance.GoNextLevel -= LoadLevel;
     }
     private void LoadLevel()
     {
         SceneManager.LoadScene(nextLevel);
-    }
-    private void SetCurrentMaxLevel()
-    {
-        
     }
 }

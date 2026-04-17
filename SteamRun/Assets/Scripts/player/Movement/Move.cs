@@ -1,7 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
-//new
 using System.Collections;
 
 
@@ -12,7 +10,7 @@ public class Move : MonoBehaviour
     private float moveSpeed;
     [SerializeField] float maxSpeed;
     public Rigidbody2D rb;
-    public float Acceleration;
+    public float acceleration;
     public float deceleration;
     public float velPower;
     public float frictionAmount;
@@ -23,7 +21,6 @@ public class Move : MonoBehaviour
     private float inputDirection;
     private float inputDirectionRef;
 
-    //new
     [SerializeField] private Animator animator;
     [SerializeField] private Transform spriteTransform;
     [SerializeField] private Transform wheelTransform;
@@ -35,11 +32,9 @@ public class Move : MonoBehaviour
     {
         moveSpeed = speed;
 
-        //new
         spriteScale = spriteTransform.localScale.x;
         invertedSpriteScale = spriteTransform.localScale.x * -1;
 
-        //new
         EventManager.Instance.PlayerWallJump += StartWaitingBeforeFlip;
     }
     private void FixedUpdate()
@@ -56,14 +51,12 @@ public class Move : MonoBehaviour
         {
             inputDirection = inputDirectionRef;
         }
-            float targetSpeed = inputDirection * moveSpeed;
+        float targetSpeed = inputDirection * moveSpeed;
         float speedDif = targetSpeed - rb.linearVelocityX;
-        float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? Acceleration : deceleration;
+        float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : deceleration;
         float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velPower) * Mathf.Sign(speedDif);
         rb.AddForce(movement * Vector2.right);
 
-
-        //new
         if (inputDirection != 0)
         {
             animator.SetBool("isRunning", true);
@@ -77,7 +70,6 @@ public class Move : MonoBehaviour
         if (rb.linearVelocity.x > 0.1f) {
             spriteTransform.localScale = new Vector3(spriteScale,
                                                      spriteTransform.localScale.y, spriteTransform.localScale.z);
-            //new
             if (canFlip == true) {
                 EventManager.Instance.PlayerFlipRightFunc();
             }
@@ -85,7 +77,6 @@ public class Move : MonoBehaviour
         else if (rb.linearVelocity.x < -0.1f) {
             spriteTransform.localScale = new Vector3(invertedSpriteScale,
                                                      spriteTransform.localScale.y, spriteTransform.localScale.z);
-            //new
             if (canFlip == true) {
                 EventManager.Instance.PlayerFlipLeftFunc();
             }
@@ -99,7 +90,6 @@ public class Move : MonoBehaviour
             inputDirection = _context.ReadValue<float>();
             inputDirectionRef = _context.ReadValue<float>();
 
-            ////new
             EventManager.Instance.PlayerMoveFunc();
         }
         else if (_context.canceled)
@@ -121,14 +111,13 @@ public class Move : MonoBehaviour
         }
     }
 
-    //new
     public void StartWaitingBeforeFlip()
     {
         StopAllCoroutines();
         StartCoroutine(WaitBeforeFlip(1f));
     }
 
-    //avoid camera flipping direction every time wall jump is made
+    // avoid camera flipping direction every time wall jump is made
     IEnumerator WaitBeforeFlip(float duration)
     {
         canFlip = false;
@@ -142,7 +131,6 @@ public class Move : MonoBehaviour
         canFlip = true;
     }
 
-    //new
     private void OnDestroy()
     {
         EventManager.Instance.PlayerWallJump -= StartWaitingBeforeFlip;

@@ -49,11 +49,11 @@ public class LevelSelection : MonoBehaviour
         EventManager.Instance.Interact += GoToLevel;
         if (isWorldDoor == true)
         {
-            doorText.text = "WORLD" + world.ToString();
+            doorText.text = "WORLD " + world.ToString();
         }
         else
         {
-            doorText.text = "LEVEL" + level.ToString();
+            doorText.text = "LEVEL " + level.ToString();
         }
 
         if (GameMode.currentMaxWorld > world )

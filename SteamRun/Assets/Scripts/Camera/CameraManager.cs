@@ -3,7 +3,6 @@ using System.Collections;
 
 public class CameraManager : MonoBehaviour
 {
-    //[SerializeField] private GameMode gm;
     [SerializeField] private Transform cameraTransform;
     public Transform playerTransform;
     private float camPositionX = 0;

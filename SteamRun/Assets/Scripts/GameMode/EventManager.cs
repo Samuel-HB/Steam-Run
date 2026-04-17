@@ -13,12 +13,10 @@ public class EventManager : MonoBehaviour
     public event Action AbleToPlay;
     public event Action PauseGame;
     public event Action Interact;
-    //new
+
     public event Action PlayerFlipRight;
     public event Action PlayerFlipLeft;
     public event Action PlayerMove;
-
-    //new
     public event Action PlayerWallJump;
 
     private void Awake()
@@ -63,25 +61,21 @@ public class EventManager : MonoBehaviour
         AbleToPlay.Invoke();
     }
 
-    //new
     public void PlayerFlipRightFunc()
     {
         PlayerFlipRight.Invoke();
     }
 
-    //new
     public void PlayerFlipLeftFunc()
     {
         PlayerFlipLeft.Invoke();
     }
 
-    //new
     public void PlayerMoveFunc()
     {
         PlayerMove.Invoke();
     }
 
-    //new
     public void PlayerWallJumpFunc()
     {
         PlayerWallJump.Invoke();

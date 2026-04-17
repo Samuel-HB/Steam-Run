@@ -4,7 +4,7 @@ using UnityEngine;
 public class TimerToBeAbleToPlay : MonoBehaviour
 {
     private IEnumerator timer;
-    [SerializeField] private int tenthSecondToWaitBeforePlay = 10;
+    [SerializeField] private int timeToWaitBeforePlay = 10;
 
     private void Start()
     {
@@ -29,7 +29,7 @@ public class TimerToBeAbleToPlay : MonoBehaviour
 
     IEnumerator StartTimer()
     {
-        for (int tenthSecond = 0; tenthSecond <= tenthSecondToWaitBeforePlay; tenthSecond++) {
+        for (int tenthSecond = 0; tenthSecond <= timeToWaitBeforePlay; tenthSecond++) {
             yield return new WaitForSeconds(0.1f);
         }
         EventManager.Instance.AbleToPlayFunc();

@@ -15,7 +15,6 @@ public class Jump : MonoBehaviour
     private float jumpForceRef;
     private bool isJumping;
 
-    //now public
     public bool isRightWallJumping;
     public bool isLeftWallJumping;
 
@@ -28,7 +27,7 @@ public class Jump : MonoBehaviour
     private bool canCoyoteJump;
     public float jumpCoyoteTime;
     private float lastGroundedTime;
-    public float BufferTime;
+    private float bufferTime;
     private float timeSinceSpacePress;
 
     private LayerMask surface;
@@ -82,7 +81,6 @@ public class Jump : MonoBehaviour
         RaycastHit2D rightWall = Physics2D.Raycast(rightWallCollider.transform.position, Vector2.up, 1.35f ,surface);
         if (rightWall == true)
         {
-            //new
             animator.SetBool("isGripping", true);
 
             isWallSliding = true;
@@ -99,7 +97,7 @@ public class Jump : MonoBehaviour
                     isJumping = true;
                     wallJumpStrength = wallJumpStrengthRef;
                     isRightWallJumping = true;
-                    //new
+
                     EventManager.Instance.PlayerWallJumpFunc();
 
                     timeSinceSpacePress = -1;
@@ -114,7 +112,6 @@ public class Jump : MonoBehaviour
         RaycastHit2D leftWall = Physics2D.Raycast(leftWallCollider.transform.position, Vector2.up, 1.35f ,surface);
         if (leftWall == true)
         {
-            //new
             animator.SetBool("isGripping", true);
 
             isWallSliding = true;
@@ -130,7 +127,7 @@ public class Jump : MonoBehaviour
                     jumpForce = jumpForceRef;
                     isJumping = true;
                     isLeftWallJumping = true;
-                    //new
+
                     EventManager.Instance.PlayerWallJumpFunc();
 
                     wallJumpStrength = wallJumpStrengthRef;
@@ -145,7 +142,6 @@ public class Jump : MonoBehaviour
         if(leftWall == false && rightWall == false)
         {
             isWallSliding = false;
-            //new
             animator.SetBool("isGripping", false);
         }
         if (isWallSliding && isGrounded==false && playerRb.linearVelocityY <0.1)
@@ -192,7 +188,6 @@ public class Jump : MonoBehaviour
     {
         if (_context.started)
         {
-
             if (isGrounded || canCoyoteJump == true)
             {
                 reactorParticleRef.StartSmoke();
@@ -210,19 +205,17 @@ public class Jump : MonoBehaviour
                 if (isLeftWallSliding)
                 {
                     isLeftWallJumping = true;
-                    //new
                     EventManager.Instance.PlayerWallJumpFunc();
                 }
                 if (isRightWallSliding)
                 {
                     isRightWallJumping = true;
-                    //new
                     EventManager.Instance.PlayerWallJumpFunc();
                 }
             }
             else if (isGrounded == false && isWallSliding == false)
             {
-                timeSinceSpacePress = BufferTime;
+                timeSinceSpacePress = bufferTime;
             }
         }
         else if (_context.canceled)
