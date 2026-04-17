@@ -1,4 +1,3 @@
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -46,7 +45,7 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    public void ReturnToMainMenu() // répétition avec le start du mainMenu (tout dupliquer par sécurité ?)
+    public void ReturnToMainMenu()
     {
         Time.timeScale = 1;
         isGamePaused = false;
@@ -64,5 +63,4 @@ public class PauseMenu : MonoBehaviour
         ResumeGame();
         SceneManager.LoadScene(worldSelection);
     }
-
 }

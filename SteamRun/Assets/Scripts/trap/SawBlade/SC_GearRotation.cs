@@ -1,12 +1,8 @@
 using UnityEngine;
-using System.Collections;
+
 public class SC_GearRotation : MonoBehaviour
 {
     public bool isMoving;
-    void Start()
-    {
-
-    }
 
     private void Update()
     {
