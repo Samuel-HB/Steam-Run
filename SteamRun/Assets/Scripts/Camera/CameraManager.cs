@@ -53,7 +53,6 @@ public class CameraManager : MonoBehaviour
             camPositionX = Mathf.Lerp(camPositionX, lookForwardPositionX, (time / duration));
             yield return null;
         }
-        print("duration" + duration);
     }
 
     private void OnDestroy()

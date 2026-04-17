@@ -34,6 +34,7 @@ public class Jump : MonoBehaviour
     private LayerMask surface;
 
     [SerializeField] private Animator animator;
+    [SerializeField] private ReactorParticle reactorParticleRef;
 
     private void OnDrawGizmos()
     {
@@ -60,6 +61,8 @@ public class Jump : MonoBehaviour
             lastGroundedTime = jumpCoyoteTime;
             if (timeSinceSpacePress > 0)
             {
+                reactorParticleRef.StartSmoke();
+
                 playerRb.linearVelocityY = 0f;
                 jumpForce = jumpForceRef;
                 isJumping = true;
@@ -89,6 +92,8 @@ public class Jump : MonoBehaviour
                 isRightWallSliding = true;
                 if (timeSinceSpacePress > 0)
                 {
+                    reactorParticleRef.StartSmoke();
+
                     playerRb.linearVelocityY = 0f;
                     jumpForce = jumpForceRef;
                     isJumping = true;
@@ -119,6 +124,8 @@ public class Jump : MonoBehaviour
                 isLeftWallSliding = true;
                 if (timeSinceSpacePress > 0)
                 {
+                    reactorParticleRef.StartSmoke();
+
                     playerRb.linearVelocityY = 0f;
                     jumpForce = jumpForceRef;
                     isJumping = true;
@@ -157,6 +164,10 @@ public class Jump : MonoBehaviour
             {
                 playerRb.AddForceY(jumpForce * Time.deltaTime * 912);
                 jumpForce -= 0.1f * Time.deltaTime * 912;
+                if (jumpForce <= 0)
+                {
+                    reactorParticleRef.EndSmoke();
+                }
             }
             if (isRightWallJumping)
             {
@@ -173,7 +184,7 @@ public class Jump : MonoBehaviour
                     playerRb.AddForce(wallJumpStrength * Vector2.right * Time.deltaTime * 912);
                     wallJumpStrength -= 0.1f * Time.deltaTime * 912;
                 }
-            }
+            }           
         }
     }
 
@@ -181,14 +192,19 @@ public class Jump : MonoBehaviour
     {
         if (_context.started)
         {
+
             if (isGrounded || canCoyoteJump == true)
             {
+                reactorParticleRef.StartSmoke();
+
                 jumpForce = jumpForceRef;
                 isJumping = true;
                 canCoyoteJump = false;
             }
             else if (isGrounded == false && isWallSliding)
             {
+                reactorParticleRef.StartSmoke();
+
                 jumpForce = jumpForceRef;
                 wallJumpStrength = wallJumpStrengthRef;
                 if (isLeftWallSliding)
@@ -214,7 +230,8 @@ public class Jump : MonoBehaviour
             isJumping = false;
             isLeftWallJumping = false;
             isRightWallJumping = false;
-            timeSinceSpacePress = 0; 
+            timeSinceSpacePress = 0;
+            reactorParticleRef.EndSmoke();
         }
     }
 }
