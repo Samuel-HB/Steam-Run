@@ -18,6 +18,7 @@ public class SC_SpikeMovement : MonoBehaviour
     private int childrenNumber;
     private Transform childrenTransform;
     private GameObject childrenGameObject;
+
     void Start()
     {
         childrenNumber = transform.childCount;
@@ -66,7 +67,6 @@ public class SC_SpikeMovement : MonoBehaviour
         {
             for (int i = 0; i < 10; i++)
             {
-
                 Vector2 newPos = transform.position;
                 if (isOnLeftWall)
                 {
@@ -76,8 +76,7 @@ public class SC_SpikeMovement : MonoBehaviour
                 {
                     newPos.x += direction;
                 }
-
-                    transform.position = newPos;
+                transform.position = newPos;
                 yield return new WaitForSeconds(0.005f);
             }
         }
@@ -85,7 +84,6 @@ public class SC_SpikeMovement : MonoBehaviour
         {
             for (int i = 0; i < 10; i++)
             {
-
                 Vector2 newPos = transform.position;
                 if (isOnGround)
                 {

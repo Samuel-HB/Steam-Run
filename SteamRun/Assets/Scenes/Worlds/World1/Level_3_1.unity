@@ -8409,6 +8409,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1336620578}
     - target: {fileID: 5828740686248629129, guid: 5da15fa5f8f141f479a4a2a8fdf560c1, type: 3}
+      propertyPath: timeToWaitBeforePlay
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828740686248629129, guid: 5da15fa5f8f141f479a4a2a8fdf560c1, type: 3}
       propertyPath: tenthSecondToWaitBeforePlay
       value: 7
       objectReference: {fileID: 0}

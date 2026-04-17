@@ -21,6 +21,7 @@ public class GameMode : MonoBehaviour
         player = Instantiate(playerPrefab, startPosition.position, Quaternion.identity);
         cameraManagerRef.playerTransform = player.transform;
         EventManager.Instance.GoNextLevel += LoadLevel;
+        EventManager.Instance.EndLevelReached += EndReached;
     }
     private void Start()
     {
@@ -40,9 +41,19 @@ public class GameMode : MonoBehaviour
     private void OnDestroy()
     {
         EventManager.Instance.GoNextLevel -= LoadLevel;
+        EventManager.Instance.EndLevelReached -= EndReached;
     }
     private void LoadLevel()
     {
         SceneManager.LoadScene(nextLevel);
+    }
+    private void EndReached()
+    {
+        currentMaxLevel++;
+        if (currentMaxLevel > 5)
+        {
+            currentMaxLevel = 1;
+            currentMaxWorld++;
+        }
     }
 }

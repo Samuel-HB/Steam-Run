@@ -37,7 +37,7 @@ public class VictoryMenu : MonoBehaviour
     public void MainMenu()
     {
         isGameVictoryOn = false;
-        SceneManager.LoadScene("Worlds Selection");
+        SceneManager.LoadScene("MainMenu");
     }
     public void Levels()
     {
